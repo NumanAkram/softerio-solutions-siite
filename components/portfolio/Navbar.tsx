@@ -6,7 +6,8 @@ import { motion } from "framer-motion";
 
 export const Navbar = () => {
   return (
-    <div className="absolute top-0 left-0 right-0 z-50 py-12 lg:pl-[13.2rem] md:pl-28 pl-20 lg:pr-[14.5rem] md:pr-28 pr-20 flex justify-between w-full">
+    // 2xl:pl-[13.2rem] xl:pl-[6rem] pl-[5rem] 2xl:pr-[14.5rem] xl:pr-[9rem] pr-[5rem]
+    <div className="absolute top-0 left-0 right-0 z-50 py-12 lg:pl-[13.2rem] md:pl-28 pl-20 lg:pr-[12rem] md:pr-28 pr-20 flex justify-between w-full">
       <Image
         className="w-[3rem] h-[3rem]"
         src={PortfolioLogo}

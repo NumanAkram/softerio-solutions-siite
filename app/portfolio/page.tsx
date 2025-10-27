@@ -15,11 +15,26 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/portfolio/Navbar";
-
+import SeparatorImg from "@/public/images/separator.png";
 import AtTheRate from "@/public/icons/at-the-rate.svg";
 import Github from "@/public/icons/github.svg";
 import LinkedIn from "@/public/icons/linkedin.svg";
+import Maintenance from "@/public/icons/maintenance.png";
 
+const aboutUs = [
+  {
+    icon: "/icons/design.png",
+    title: "D E S I G N",
+    description:
+      "We create beautiful, user-friendly interfaces that enhance user experience and drive engagement.",
+  },
+  {
+    icon: "/icons/development.png",
+    title: "D E V E L O P M E N T",
+    description:
+      "Our expert developers build robust, scalable applications using the latest technologies and best practices.",
+  },
+];
 export default function PortfolioPage() {
   const [portfolioFilter, setPortfolioFilter] = useState("ALL");
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -367,6 +382,7 @@ export default function PortfolioPage() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            //2xl:pl-[13.2rem] xl:pl-[6rem] pl-[5rem]
             className="w-1/2 pt-40  flex flex-col justify-center lg:pl-[13.2rem] md:pl-28 pl-20"
           >
             <motion.p
@@ -383,7 +399,7 @@ export default function PortfolioPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className="lg:text-6xl text-2xl text-black font-bold mb-2"
+                className="lg:text-6xl text-2xl text-black font-bold mb-2 -mr-7"
               >
                 Numan Akram
               </motion.h1>
@@ -458,20 +474,6 @@ export default function PortfolioPage() {
                 className="w-[40rem] object-contain"
               />
             </motion.div>
-
-            {/* Quote */}
-            {/* <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-                className="absolute bottom-12 right-12 bg-white p-3 rounded-lg shadow-lg max-w-xs"
-              >
-                <p className="text-xs text-gray-600">
-                  Transforming ideas into digital reality with cutting-edge
-                  technology
-                </p>
-              </motion.div> */}
-            {/* </div> */}
           </motion.div>
         </div>
 
@@ -484,17 +486,17 @@ export default function PortfolioPage() {
           transition={{ delay: 1, duration: 0.8 }}
           className="grid grid-cols-12 gap-4 place-content-between"
         >
-          <div className="col-span-8 py-9 pl-[4rem]">
+          <div className="col-span-8 py-9 pl-[4.5rem]">
             <h3 className="text-2xl font-bold mb-2 tracking-wider">
               SOFTERIO SOLUTIONS
             </h3>
             <p className="text-gray-300 text-xs leading-relaxed py-4">
-            We specialize in creating innovative web and mobile solutions that
+              We specialize in creating innovative web and mobile solutions that
               drive business growth. Our team of experts delivers cutting-edge
               technology solutions with a focus on user experience and
-              performance. From concept to deployment, we transform your vision into
-              reality with precision and creativity. Partner with us to elevate your
-              digital presence and achieve measurable success.
+              performance. From concept to deployment, we transform your vision
+              into reality with precision and creativity. Partner with us to
+              elevate your digital presence and achieve measurable success.
             </p>
 
             <button
@@ -523,7 +525,7 @@ export default function PortfolioPage() {
       {/* About Section */}
       <section
         id="about"
-        className="min-h-screen bg-gray-200 flex flex-col justify-center py-20"
+        className="min-h-screen  bg-[#D7D7D7] flex flex-col justify-center pt-28"
       >
         <div className="max-w-4xl mx-auto px-8 text-center">
           <motion.div
@@ -532,9 +534,9 @@ export default function PortfolioPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="inline-block border-4 border-black px-12 py-4 mb-8">
+            <div className="inline-block border-[6px] border-black px-16 py-4">
               <h2 className="text-2xl font-bold tracking-wider text-black">
-                ABOUT US
+                A B O U T M E
               </h2>
             </div>
           </motion.div>
@@ -544,7 +546,7 @@ export default function PortfolioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
+            className="text-[#050505] text-xs py-14 max-w-2xl mx-auto leading-relaxed"
           >
             Softerio Solutions is a leading technology company specializing in
             web development, mobile applications, and UI/UX design. We help
@@ -565,9 +567,9 @@ export default function PortfolioPage() {
                   .getElementById("skills")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="border-2 border-gray-400 text-gray-700 hover:bg-gray-700 hover:text-white transition-all duration-300 px-8 py-2 rounded"
+              className="border-x-2 border-black text-black text-sm font-semibold transition-all duration-300 px-8 py-1"
             >
-              EXPLORE SKILLS
+              EXPLORE
             </button>
           </motion.div>
 
@@ -579,29 +581,18 @@ export default function PortfolioPage() {
             viewport={{ once: true }}
             className="flex justify-center mb-16"
           >
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-px bg-gray-400"></div>
-              <div className="w-8 h-8 border-2 border-gray-400 rotate-45"></div>
-              <div className="w-16 h-px bg-gray-400"></div>
-            </div>
+            <Image
+              src={SeparatorImg}
+              alt="arrow-down"
+              width={100}
+              height={100}
+              className="w-32"
+            />
           </motion.div>
 
           {/* Service Cards - 2 per row with reduced height and increased width */}
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
-            {[
-              {
-                icon: <Palette className="w-8 h-8" />,
-                title: "DESIGN",
-                description:
-                  "We create beautiful, user-friendly interfaces that enhance user experience and drive engagement.",
-              },
-              {
-                icon: <Code className="w-8 h-8" />,
-                title: "DEVELOPMENT",
-                description:
-                  "Our expert developers build robust, scalable applications using the latest technologies and best practices.",
-              },
-            ].map((service, index) => (
+          <div className="flex gap-8">
+            {aboutUs.map((service, index) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -610,14 +601,21 @@ export default function PortfolioPage() {
                 viewport={{ once: true }}
                 className="group cursor-pointer"
               >
-                <div className="text-left p-6 rounded-lg transition-all duration-300 hover:-translate-y-2 h-48">
-                  <div className="mb-4 text-gray-600 group-hover:text-black transition-colors duration-300">
-                    {service.icon}
+                <div className="text-left rounded-lg transition-all duration-300 hover:-translate-y-2 ">
+                  <div className="flex items-center">
+                    <Image
+                      className="w-12 -mr-3"
+                      src={service.icon}
+                      alt={service.title}
+                      width={100}
+                      height={100}
+                    />
+
+                    <h3 className="font-bold tracking-wider text-black pb-2">
+                      {service.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 tracking-wider text-black">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-black text-xs leading-relaxed pl-9">
                     {service.description}
                   </p>
                 </div>
@@ -633,15 +631,22 @@ export default function PortfolioPage() {
             viewport={{ once: true }}
             className="flex justify-center"
           >
-            <div className="group cursor-pointer w-full md:w-1/2">
-              <div className="text-left p-6 rounded-lg transition-all duration-300 hover:-translate-y-2 h-48">
-                <div className="mb-4 text-gray-600 group-hover:text-black transition-colors duration-300">
-                  <Settings className="w-8 h-8" />
+            <div className="group cursor-pointer w-full md:w-1/2 pt-14 pb-10">
+              <div className="text-left rounded-lg transition-all duration-300 hover:-translate-y-2">
+                <div className="flex items-center">
+                  <Image
+                    className="w-14 h-12 -mr-3"
+                    src={Maintenance}
+                    alt="icon"
+                    width={100}
+                    height={100}
+                  />
+
+                  <h3 className="mt-2 font-bold tracking-wider text-black">
+                    M A I N T E N A N C E
+                  </h3>
                 </div>
-                <h3 className="text-xl font-bold mb-3 tracking-wider text-black">
-                  MAINTENANCE
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-black text-xs leading-relaxed pl-11">
                   We provide ongoing support and maintenance to ensure your
                   applications run smoothly and efficiently.
                 </p>
@@ -657,17 +662,19 @@ export default function PortfolioPage() {
             viewport={{ once: true }}
             className="flex justify-center mt-16"
           >
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-px bg-gray-400"></div>
-              <div className="w-8 h-8 border-2 border-gray-400 rotate-45"></div>
-              <div className="w-16 h-px bg-gray-400"></div>
-            </div>
+            <Image
+              src={SeparatorImg}
+              alt="arrow-down"
+              width={100}
+              height={100}
+              className="w-32"
+            />
           </motion.div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="min-h-screen bg-gray-100 py-20">
+      <section id="skills" className="min-h-screen bg-[#D7D7D7] py-20">
         <div className="max-w-4xl mx-auto px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -675,23 +682,12 @@ export default function PortfolioPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="inline-block border-4 border-black px-12 py-4 mb-8">
+            <div className="inline-block border-[6px] border-black px-16 py-4 mb-8">
               <h2 className="text-2xl font-bold tracking-wider text-black">
-                OUR SKILLS
+                S K I L L S
               </h2>
             </div>
           </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed"
-          >
-            We master a wide range of technologies and frameworks to deliver
-            cutting-edge solutions for our clients.
-          </motion.p>
 
           {/* Skills Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
