@@ -492,7 +492,9 @@ export default function PortfolioPage() {
             We specialize in creating innovative web and mobile solutions that
               drive business growth. Our team of experts delivers cutting-edge
               technology solutions with a focus on user experience and
-              performance.
+              performance. From concept to deployment, we transform your vision into
+              reality with precision and creativity. Partner with us to elevate your
+              digital presence and achieve measurable success.
             </p>
 
             <button

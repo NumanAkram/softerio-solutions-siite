@@ -13,13 +13,10 @@ import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import ChatWidget from "@/components/ChatWidget";
 import ThemeToggle from "@/components/ThemeToggle";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <Header />
       <ThemeToggle />
       <Hero />
       <Services />
@@ -32,7 +29,6 @@ export default function Home() {
       {/* <FAQ /> */}
       <Contact />
       <ChatWidget />
-      <Footer />
     </main>
   );
 }
