@@ -32,11 +32,11 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 lg:ml-4">
             <Image
-              src="/images/LOGO1.png"
+              src="/images/logo-removebg-preview.png"
               alt="Company Logo"
               width={200}
               height={80}
-              className={`h-20 w-auto object-contain transition-all duration-300 ${
+              className={`h-20 w-auto object-contain transition-all duration-300 mt-5 ${
                 isScrolled ? 'brightness-0' : 'brightness-0 invert'
               }`}
               priority

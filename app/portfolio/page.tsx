@@ -35,6 +35,33 @@ const aboutUs = [
       "Our expert developers build robust, scalable applications using the latest technologies and best practices.",
   },
 ];
+
+// Skills data arrays
+const usingNowSkills = [
+  { name: "HTML5", icon: "/icons/html.svg" },
+  { name: "CSS3", icon: "/icons/css.svg" },
+  { name: "SASS", icon: "/icons/sass.svg" },
+  { name: "JAVASCRIPT", icon: "/icons/javascript.svg" },
+  { name: "REACT", icon: "/icons/react.svg" },
+  { name: "BOOTSTRAP", icon: "/icons/bootstrap.svg" },
+  { name: "GIT", icon: "/icons/git.png" },
+  { name: "FIGMA", icon: "/icons/figma.svg" },
+];
+
+const learningSkills = [
+  { name: "NODEJS", icon: "/icons/nodejs.svg" },
+  { name: "MySQL", icon: "/icons/mysql.svg" },
+  { name: "MONGODB", icon: "/icons/mongodb.svg" },
+  { name: "TYPESCRIPT", icon: "/icons/typescript.svg" },
+];
+
+const otherSkills = [
+  { name: "ANGIELSKI\nC1/C2", icon: "/icons/angielski.png",  },
+  { name: "HISZPANSKI\nB1/B2", icon: "/icons/hiszpanski.png",  },
+  { name: "C++", icon: "/icons/c++.png" },
+  { name: "C", icon: "/icons/c.png" },
+];
+
 export default function PortfolioPage() {
   const [portfolioFilter, setPortfolioFilter] = useState("ALL");
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -522,10 +549,11 @@ export default function PortfolioPage() {
           </div>
         </motion.div>
       </section>
+      
       {/* About Section */}
       <section
         id="about"
-        className="min-h-screen  bg-[#D7D7D7] flex flex-col justify-center pt-28"
+        className="min-h-screen bg-[#D7D7D7] flex flex-col justify-center pt-28"
       >
         <div className="max-w-4xl mx-auto px-8 text-center">
           <motion.div
@@ -534,9 +562,9 @@ export default function PortfolioPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="inline-block border-[6px] border-black px-16 py-4">
-              <h2 className="text-2xl font-bold tracking-wider text-black">
-                A B O U T M E
+            <div className="inline-block border-[6px] border-black px-16 py-5">
+              <h2 className="text-2xl font-bold text-black tracking-[0.3em]">
+                ABOUT ME
               </h2>
             </div>
           </motion.div>
@@ -675,165 +703,185 @@ export default function PortfolioPage() {
 
       {/* Skills Section */}
       <section id="skills" className="min-h-screen bg-[#D7D7D7] py-20">
-        <div className="max-w-4xl mx-auto px-8 text-center">
+        <div className="max-w-[47rem] mx-auto px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="inline-block border-[6px] border-black px-16 py-4 mb-8">
-              <h2 className="text-2xl font-bold tracking-wider text-black">
-                S K I L L S
+            <div className="inline-block border-[7px] border-black px-[5.4rem] py-5 mb-20">
+              <h2 className="text-2xl font-bold text-black tracking-[0.4em]">
+                SKILLS
               </h2>
             </div>
           </motion.div>
 
-          {/* Skills Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Frontend Development",
-                icon: <Code className="w-8 h-8 text-blue-600" />,
-                tech: [
-                  "React",
-                  "Vue.js",
-                  "Next.js",
-                  "Nuxt.js",
-                  "HTML",
-                  "CSS",
-                  "JavaScript",
-                  "TypeScript",
-                  "Bootstrap",
-                  "Sass",
-                ],
-              },
-              {
-                name: "Backend Development",
-                icon: <Layers className="w-8 h-8 text-green-600" />,
-                tech: [
-                  "Node.js",
-                  "Python",
-                  "Laravel",
-                  ".NET",
-                  "PHP",
-                  "Express.js",
-                ],
-              },
-              {
-                name: "Mobile Development",
-                icon: <Smartphone className="w-8 h-8 text-purple-600" />,
-                tech: ["React Native", "Flutter", "Swift", "Kotlin", "Ionic"],
-              },
-              {
-                name: "Database",
-                icon: <Database className="w-8 h-8 text-orange-600" />,
-                tech: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "SQLite"],
-              },
-              {
-                name: "Cloud & DevOps",
-                icon: <Cloud className="w-8 h-8 text-indigo-600" />,
-                tech: ["AWS", "Azure", "Docker", "Kubernetes", "Git", "CI/CD"],
-              },
-              {
-                name: "Design Tools",
-                icon: <Palette className="w-8 h-8 text-pink-600" />,
-                tech: [
-                  "Figma",
-                  "Adobe XD",
-                  "Sketch",
-                  "Photoshop",
-                  "Illustrator",
-                ],
-              },
-            ].map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index, duration: 0.8 }}
-                viewport={{ once: true }}
-                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
-              >
-                <div className="flex items-center mb-4">
-                  {skill.icon}
-                  <h3 className="text-lg font-bold ml-3 text-gray-900">
+          {/* Using Now Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <h3 className="text-2xl font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
+              USING NOW:
+            </h3>
+            <div className="grid grid-cols-4 gap-24 place-content-between">
+              {usingNowSkills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="flex flex-col items-center gap-5"
+                >
+                   <Image 
+                    src={skill.icon} 
+                    alt={skill.name} 
+                    width={80} 
+                    height={80}
+                    className="w-20 h-20"
+                  />
+                  <p className="text-[1.2rem] text-black font-light tracking-[0.1em]">
                     {skill.name}
-                  </h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {skill.tech.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full font-medium hover:bg-gray-200 transition-colors duration-200"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Learning Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <h3 className="text-2xl font-bold text-black mb-8 text-left tracking-[0.2em]">
+              LEARNING:
+            </h3>
+            <div className="grid grid-cols-4 gap-8">
+              {learningSkills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="flex flex-col items-center"
+                >
+                  <Image className="w-20 h-20" src={skill.icon} alt={skill.name} width={100} height={100} />
+                  <p className="text-xs font-semibold text-black tracking-wide">
+                    {skill.name}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Other Skills Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-bold text-black mb-8 text-left tracking-[0.2em]">
+              OTHER SKILLS:
+            </h3>
+            <div className="grid grid-cols-4 gap-8">
+              {otherSkills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="flex flex-col items-center"
+                >
+                  <Image 
+                    src={skill.icon} 
+                    alt={skill.name} 
+                    width={80} 
+                    height={80}
+                    className="w-20 h-20"
+                  />
+                  <p className="text-xs font-semibold text-black tracking-wide whitespace-pre-line text-center">
+                    {skill.name}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Portfolio Section - Black Background Connected with Portfolio Heading */}
-      <section id="portfolio" className="min-h-screen bg-black py-20">
+      <section id="portfolio" className="bg-[#1A1A1A] pb-20">
         {/* Hero Image */}
         <motion.div
           initial={{ opacity: 0, scale: 1.1 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="h-64 bg-cover bg-center relative mb-16"
-          style={{
-            backgroundImage:
-              "url(https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1600)",
-          }}
+          className="h-64 bg-cover bg-center bg-[url(/images/portfolio-bg.png)]"
+          
         >
-          <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+          <div className="flex items-center justify-center h-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
               viewport={{ once: true }}
-              className="inline-block border-4 border-white px-12 py-4"
+              className="inline-block border-[7px] border-black px-16 py-3"
             >
-              <h2 className="text-2xl font-bold tracking-wider text-black bg-white px-4 py-2">
-                PORTFOLIO
+              <h2 className="text-2xl font-bold tracking-wider text-black px-4 py-2">
+                P O R T F O L I O
               </h2>
             </motion.div>
           </div>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto px-8">
+        <div className="">
           {/* Filter Tabs */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex justify-center mb-12"
+            className="flex justify-center pt-10 pb-12"
           >
-            <div className="bg-gray-800 rounded-lg p-2 flex space-x-1">
+            <div className=" space-x-12 border-b-2 border-gray-700">
               {["ALL", "CODED", "DESIGNED"].map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setPortfolioFilter(filter)}
-                  className={`px-8 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  className={`px-6 pb-3 text-xs font-semibold tracking-wider transition-all duration-300 relative ${
                     portfolioFilter === filter
-                      ? "bg-white text-black"
-                      : "text-gray-300 hover:text-white hover:bg-gray-700"
+                      ? "text-white"
+                      : "text-gray-500 hover:text-gray-300"
                   }`}
                 >
                   {filter}
+                  {portfolioFilter === filter && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    />
+                  )}
                 </button>
               ))}
             </div>
           </motion.div>
 
           {/* Portfolio Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 mb-16">
             <AnimatePresence mode="wait">
               {filteredPortfolio.map((item, index) => (
                 <motion.div
@@ -844,8 +892,8 @@ export default function PortfolioPage() {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   className="group cursor-pointer"
                 >
-                  <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                    <div className="relative h-48 overflow-hidden">
+                  <div className="bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                    <div className="h-48">
                       <Image
                         src={item.image}
                         alt={item.title}
@@ -857,55 +905,7 @@ export default function PortfolioPage() {
                           target.src = "/images/projects/4.png";
                         }}
                       />
-                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="text-center text-white">
-                            <h4 className="text-xl font-bold mb-2">
-                              {item.title}
-                            </h4>
-                            <p className="text-sm mb-4">{item.subtitle}</p>
-                            <div className="space-y-2 text-xs mb-4">
-                              <div className="flex justify-between">
-                                <span>Client:</span>
-                                <span className="text-teal-300">
-                                  {item.client}
-                                </span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span>Duration:</span>
-                                <span className="text-teal-300">
-                                  {item.duration}
-                                </span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span>Budget:</span>
-                                <span className="text-teal-300">
-                                  {item.budget}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="flex space-x-4 justify-center">
-                              <button className="bg-white text-black hover:bg-gray-200 transition-all duration-300 px-4 py-2 rounded text-sm font-medium">
-                                DEMO
-                              </button>
-                              <button className="border border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-4 py-2 rounded text-sm font-medium">
-                                MORE
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Card Footer */}
-                    <div className="p-4">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-gray-600 mb-2">
-                        {item.subtitle}
-                      </p>
-                      <p className="text-xs text-gray-500">{item.languages}</p>
+                     
                     </div>
                   </div>
                 </motion.div>

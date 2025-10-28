@@ -1,15 +1,15 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import PortfolioLogo from "@/public/icons/portfolio-logo.svg";
+import PortfolioLogo from "@/public/images/logo-removebg-preview.png";
 import { motion } from "framer-motion";
 
 export const Navbar = () => {
   return (
     // 2xl:pl-[13.2rem] xl:pl-[6rem] pl-[5rem] 2xl:pr-[14.5rem] xl:pr-[9rem] pr-[5rem]
-    <div className="absolute top-0 left-0 right-0 z-50 py-12 lg:pl-[13.2rem] md:pl-28 pl-20 lg:pr-[12rem] md:pr-28 pr-20 flex justify-between w-full">
+    <div className="absolute top-0 left-0 right-0 z-50 py-12 lg:pl-[13.2rem] md:pl-28 pl-20 lg:pr-[8.6rem] md:pr-28 pr-20 flex justify-between w-full">
       <Image
-        className="w-[3rem] h-[3rem]"
+        className="w-[4rem] h-[4rem]"
         src={PortfolioLogo}
         width={100}
         height={100}
@@ -22,6 +22,12 @@ export const Navbar = () => {
         transition={{ delay: 0.3, duration: 0.8 }}
         className="flex pb-1 items-center gap-[4rem]"
       >
+        <Link
+          href="/"
+          className="text-white text-sm font-semibold hover:text-gray-300 transition-colors duration-300 hover:scale-105"
+        >
+          Home
+        </Link>
         <Link
           href="#about"
           className="text-white text-sm font-semibold hover:text-gray-300 transition-colors duration-300 hover:scale-105"

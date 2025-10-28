@@ -118,13 +118,13 @@ export default function Hero() {
       <div className="container mx-auto px-6 pt-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
           {/* Left Content */}
-          <div className="order-2 lg:order-1 space-y-6 md:pr-8 lg:pr-14 max-w-2xl pt-20 ml-16">
+          <div className="order-2 lg:order-1 space-y-6 md:pr-8 lg:pr-14 max-w-[40.2rem] pt-20 ml-16">
             <h1 className="text-[30px] sm:text-[38px] md:text-[40px] lg:text-[45px] font-semibold leading-tight animate-fade-in-up [animation-delay:100ms]">
               <span className="text-white">Delivering </span>
-              <span className="text-teal-400">Superior IT Solutions.</span>
+              <span className="text-teal-400">Soft IT Solutions</span>
             </h1>
             <p className="text-lg text-white animate-fade-in-up [animation-delay:300ms]">
-              You can easily change any design to your own. It is also highly customizable SEO friendly template.
+              Softerio Solutions provides customizable, SEO-friendly software solutions tailored to your business needs. We turn your ideas into exceptional digital experiences.
             </p>
           </div>
 
