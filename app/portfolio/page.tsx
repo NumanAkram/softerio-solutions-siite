@@ -2,16 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ChevronUp,
-  Code,
-  Palette,
-  Settings,
-  Database,
-  Cloud,
-  Smartphone,
-  Layers,
-} from "lucide-react";
+import { useForm } from "react-hook-form";
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/portfolio/Navbar";
@@ -20,6 +11,20 @@ import AtTheRate from "@/public/icons/at-the-rate.svg";
 import Github from "@/public/icons/github.svg";
 import LinkedIn from "@/public/icons/linkedin.svg";
 import Maintenance from "@/public/icons/maintenance.png";
+import BaselineDoubleArrow from "@/public/icons/ic_baseline-double-arrow.svg";
+import FacebookIcon from "@/public/icons/facebook.svg";
+import LinkedInIcon from "@/public/icons/linkedin-border.svg";
+import InstagramIcon from "@/public/icons/instagram.svg";
+import EmailIcon from "@/public/icons/email.svg";
+import WhatsappIcon from "@/public/icons/whatsapp-black.png";
+
+// Form data interface
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
 
 const aboutUs = [
   {
@@ -56,8 +61,8 @@ const learningSkills = [
 ];
 
 const otherSkills = [
-  { name: "ANGIELSKI\nC1/C2", icon: "/icons/angielski.png",  },
-  { name: "HISZPANSKI\nB1/B2", icon: "/icons/hiszpanski.png",  },
+  { name: "ANGIELSKI\nC1/C2", icon: "/icons/angielski.png" },
+  { name: "HISZPANSKI\nB1/B2", icon: "/icons/hiszpanski.png" },
   { name: "C++", icon: "/icons/c++.png" },
   { name: "C", icon: "/icons/c.png" },
 ];
@@ -65,6 +70,14 @@ const otherSkills = [
 export default function PortfolioPage() {
   const [portfolioFilter, setPortfolioFilter] = useState("ALL");
   const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // React Hook Form setup
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,6 +90,14 @@ export default function PortfolioPage() {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Form submission handler
+  const onSubmit = (data: FormData) => {
+    console.log("Form submitted with data:", data);
+
+    // Reset form after submission
+    reset();
   };
 
   // All portfolio items from the projects folder
@@ -448,18 +469,18 @@ export default function PortfolioPage() {
               transition={{ delay: 0.9, duration: 0.8 }}
               className="flex space-x-6"
             >
-              <a
+              <Link
                 href="mailto:mnumanakrambhatti@gmail.com"
-                className="w-[3.1rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
+                className="w-[2.7rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
                 style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)" }}
               >
                 <Image src={AtTheRate} alt="Email" className="w-7 h-7" />
-              </a>
+              </Link>
               <Link
                 href="https://github.com/muhammadnuman-eng"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-[3.1rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
+                className="w-[2.7rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
                 style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)" }}
               >
                 <Image src={Github} alt="GitHub" className="w-7 h-7" />
@@ -468,10 +489,27 @@ export default function PortfolioPage() {
                 href="https://www.linkedin.com/company/softerio-solutions/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-[3.1rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
+                className="w-[2.7rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
                 style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)" }}
               >
-                <Image src={LinkedIn} alt="LinkedIn" className="w-8 h-8" />
+                <Image
+                  src={LinkedIn}
+                  alt="LinkedIn"
+                  className="w-[1.8rem] h-[1.8rem]"
+                />
+              </Link>
+              <Link
+                href="https://wa.me/923036057586"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-[2.7rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
+                style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)" }}
+              >
+                <Image
+                  src={WhatsappIcon}
+                  alt="LinkedIn"
+                  className="w-[1.8rem] h-[1.8rem]"
+                />
               </Link>
             </motion.div>
           </motion.div>
@@ -549,279 +587,287 @@ export default function PortfolioPage() {
           </div>
         </motion.div>
       </section>
-      
-      {/* About Section */}
-      <section
-        id="about"
-        className="min-h-screen bg-[#D7D7D7] flex flex-col justify-center pt-28"
-      >
-        <div className="max-w-4xl mx-auto px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="inline-block border-[6px] border-black px-16 py-5">
-              <h2 className="text-2xl font-bold text-black tracking-[0.3em]">
-                ABOUT ME
-              </h2>
-            </div>
-          </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-[#050505] text-xs py-14 max-w-2xl mx-auto leading-relaxed"
-          >
-            Softerio Solutions is a leading technology company specializing in
-            web development, mobile applications, and UI/UX design. We help
-            businesses transform their digital presence with innovative
-            solutions that drive growth and user engagement.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <button
-              onClick={() =>
-                document
-                  .getElementById("skills")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="border-x-2 border-black text-black text-sm font-semibold transition-all duration-300 px-8 py-1"
+      <div className="bg-[url(/images/aboutme-&-skills-section-bg.svg)] bg-cover bg-center">
+        {/* About Section */}
+        <section
+          id="about"
+          className="min-h-screen flex flex-col justify-center pt-28"
+        >
+          <div className="max-w-4xl mx-auto px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
             >
-              EXPLORE
-            </button>
-          </motion.div>
+              <div className="inline-block border-[6px] border-black px-16 py-5">
+                <h2 className="text-2xl font-bold text-black tracking-[0.3em]">
+                  ABOUT ME
+                </h2>
+              </div>
+            </motion.div>
 
-          {/* Decorative Element */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex justify-center mb-16"
-          >
-            <Image
-              src={SeparatorImg}
-              alt="arrow-down"
-              width={100}
-              height={100}
-              className="w-32"
-            />
-          </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-[#050505] text-xs py-14 max-w-2xl mx-auto leading-relaxed"
+            >
+              Softerio Solutions is a leading technology company specializing in
+              web development, mobile applications, and UI/UX design. We help
+              businesses transform their digital presence with innovative
+              solutions that drive growth and user engagement.
+            </motion.p>
 
-          {/* Service Cards - 2 per row with reduced height and increased width */}
-          <div className="flex gap-8">
-            {aboutUs.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 * index, duration: 0.8 }}
-                viewport={{ once: true }}
-                className="group cursor-pointer"
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="mb-16"
+            >
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("skills")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="border-x-2 border-black text-black text-sm font-semibold transition-all duration-300 px-8 py-1"
               >
-                <div className="text-left rounded-lg transition-all duration-300 hover:-translate-y-2 ">
+                EXPLORE
+              </button>
+            </motion.div>
+
+            {/* Decorative Element */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex justify-center mb-16"
+            >
+              <Image
+                src={SeparatorImg}
+                alt="arrow-down"
+                width={100}
+                height={100}
+                className="w-32"
+              />
+            </motion.div>
+
+            {/* Service Cards - 2 per row with reduced height and increased width */}
+            <div className="flex gap-8">
+              {aboutUs.map((service, index) => (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 * index, duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="group cursor-pointer"
+                >
+                  <div className="text-left rounded-lg transition-all duration-300 hover:-translate-y-2 ">
+                    <div className="flex items-center">
+                      <Image
+                        className="w-12 -mr-3"
+                        src={service.icon}
+                        alt={service.title}
+                        width={100}
+                        height={100}
+                      />
+
+                      <h3 className="font-bold tracking-wider text-black pb-2">
+                        {service.title}
+                      </h3>
+                    </div>
+                    <p className="text-black text-xs leading-relaxed pl-9">
+                      {service.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Third Card - Centered in second row */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex justify-center"
+            >
+              <div className="group cursor-pointer w-full md:w-1/2 pt-14 pb-10">
+                <div className="text-left rounded-lg transition-all duration-300 hover:-translate-y-2">
                   <div className="flex items-center">
                     <Image
-                      className="w-12 -mr-3"
-                      src={service.icon}
-                      alt={service.title}
+                      className="w-14 h-12 -mr-3"
+                      src={Maintenance}
+                      alt="icon"
                       width={100}
                       height={100}
                     />
 
-                    <h3 className="font-bold tracking-wider text-black pb-2">
-                      {service.title}
+                    <h3 className="mt-2 font-bold tracking-wider text-black">
+                      M A I N T E N A N C E
                     </h3>
                   </div>
-                  <p className="text-black text-xs leading-relaxed pl-9">
-                    {service.description}
+                  <p className="text-black text-xs leading-relaxed pl-11">
+                    We provide ongoing support and maintenance to ensure your
+                    applications run smoothly and efficiently.
                   </p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Third Card - Centered in second row */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex justify-center"
-          >
-            <div className="group cursor-pointer w-full md:w-1/2 pt-14 pb-10">
-              <div className="text-left rounded-lg transition-all duration-300 hover:-translate-y-2">
-                <div className="flex items-center">
-                  <Image
-                    className="w-14 h-12 -mr-3"
-                    src={Maintenance}
-                    alt="icon"
-                    width={100}
-                    height={100}
-                  />
-
-                  <h3 className="mt-2 font-bold tracking-wider text-black">
-                    M A I N T E N A N C E
-                  </h3>
-                </div>
-                <p className="text-black text-xs leading-relaxed pl-11">
-                  We provide ongoing support and maintenance to ensure your
-                  applications run smoothly and efficiently.
-                </p>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Bottom Decorative Element */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex justify-center mt-16"
-          >
-            <Image
-              src={SeparatorImg}
-              alt="arrow-down"
-              width={100}
-              height={100}
-              className="w-32"
-            />
-          </motion.div>
-        </div>
-      </section>
+            {/* Bottom Decorative Element */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="flex justify-center mt-16"
+            >
+              <Image
+                src={SeparatorImg}
+                alt="arrow-down"
+                width={100}
+                height={100}
+                className="w-32"
+              />
+            </motion.div>
+          </div>
+        </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="min-h-screen bg-[#D7D7D7] py-20">
-        <div className="max-w-[47rem] mx-auto px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="inline-block border-[7px] border-black px-[5.4rem] py-5 mb-20">
-              <h2 className="text-2xl font-bold text-black tracking-[0.4em]">
-                SKILLS
-              </h2>
-            </div>
-          </motion.div>
+        {/* Skills Section */}
+        <section id="skills" className="min-h-screen py-20">
+          <div className="max-w-[47rem] mx-auto px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-block border-[7px] border-black px-[5.4rem] py-5 mb-20">
+                <h2 className="text-2xl font-bold text-black tracking-[0.4em]">
+                  SKILLS
+                </h2>
+              </div>
+            </motion.div>
 
-          {/* Using Now Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h3 className="text-2xl font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
-              USING NOW:
-            </h3>
-            <div className="grid grid-cols-4 gap-24 place-content-between">
-              {usingNowSkills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * index, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="flex flex-col items-center gap-5"
-                >
-                   <Image 
-                    src={skill.icon} 
-                    alt={skill.name} 
-                    width={80} 
-                    height={80}
-                    className="w-20 h-20"
-                  />
-                  <p className="text-[1.2rem] text-black font-light tracking-[0.1em]">
-                    {skill.name}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+            {/* Using Now Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="mb-16"
+            >
+              <h3 className="text-2xl font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
+                USING NOW:
+              </h3>
+              <div className="grid grid-cols-4 gap-24 place-content-between">
+                {usingNowSkills.map((skill, index) => (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * index, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center gap-5"
+                  >
+                    <Image
+                      src={skill.icon}
+                      alt={skill.name}
+                      width={80}
+                      height={80}
+                      className="w-20 h-20"
+                    />
+                    <p className="text-[1.2rem] text-black font-light tracking-[0.1em]">
+                      {skill.name}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-          {/* Learning Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h3 className="text-2xl font-bold text-black mb-8 text-left tracking-[0.2em]">
-              LEARNING:
-            </h3>
-            <div className="grid grid-cols-4 gap-8">
-              {learningSkills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * index, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="flex flex-col items-center"
-                >
-                  <Image className="w-20 h-20" src={skill.icon} alt={skill.name} width={100} height={100} />
-                  <p className="text-xs font-semibold text-black tracking-wide">
-                    {skill.name}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+            {/* Learning Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="mb-16"
+            >
+              <h3 className="text-2xl font-bold text-black mb-8 text-left tracking-[0.2em]">
+                LEARNING:
+              </h3>
+              <div className="grid grid-cols-4 gap-8">
+                {learningSkills.map((skill, index) => (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * index, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center"
+                  >
+                    <Image
+                      className="w-20 h-20"
+                      src={skill.icon}
+                      alt={skill.name}
+                      width={100}
+                      height={100}
+                    />
+                    <p className="text-xs font-semibold text-black tracking-wide">
+                      {skill.name}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-          {/* Other Skills Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-bold text-black mb-8 text-left tracking-[0.2em]">
-              OTHER SKILLS:
-            </h3>
-            <div className="grid grid-cols-4 gap-8">
-              {otherSkills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * index, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="flex flex-col items-center"
-                >
-                  <Image 
-                    src={skill.icon} 
-                    alt={skill.name} 
-                    width={80} 
-                    height={80}
-                    className="w-20 h-20"
-                  />
-                  <p className="text-xs font-semibold text-black tracking-wide whitespace-pre-line text-center">
-                    {skill.name}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            {/* Other Skills Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-black mb-8 text-left tracking-[0.2em]">
+                OTHER SKILLS:
+              </h3>
+              <div className="grid grid-cols-4 gap-8">
+                {otherSkills.map((skill, index) => (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * index, duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center"
+                  >
+                    <Image
+                      src={skill.icon}
+                      alt={skill.name}
+                      width={80}
+                      height={80}
+                      className="w-20 h-20"
+                    />
+                    <p className="text-xs font-semibold text-black tracking-wide whitespace-pre-line text-center">
+                      {skill.name}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
 
       {/* Portfolio Section - Black Background Connected with Portfolio Heading */}
-      <section id="portfolio" className="bg-[#1A1A1A] pb-20">
+      <section id="portfolio" className="bg-[#1A1A1A]">
         {/* Hero Image */}
         <motion.div
           initial={{ opacity: 0, scale: 1.1 }}
@@ -829,7 +875,6 @@ export default function PortfolioPage() {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
           className="h-64 bg-cover bg-center bg-[url(/images/portfolio-bg.png)]"
-          
         >
           <div className="flex items-center justify-center h-full">
             <motion.div
@@ -839,8 +884,8 @@ export default function PortfolioPage() {
               viewport={{ once: true }}
               className="inline-block border-[7px] border-black px-16 py-3"
             >
-              <h2 className="text-2xl font-bold tracking-wider text-black px-4 py-2">
-                P O R T F O L I O
+              <h2 className="text-2xl font-bold text-black px-4 py-2 tracking-[0.3em]">
+                PORTFOLIO
               </h2>
             </motion.div>
           </div>
@@ -872,7 +917,11 @@ export default function PortfolioPage() {
                       layoutId="activeTab"
                       className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"
                       initial={false}
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </button>
@@ -881,7 +930,7 @@ export default function PortfolioPage() {
           </motion.div>
 
           {/* Portfolio Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
             <AnimatePresence mode="wait">
               {filteredPortfolio.map((item, index) => (
                 <motion.div
@@ -905,7 +954,6 @@ export default function PortfolioPage() {
                           target.src = "/images/projects/4.png";
                         }}
                       />
-                     
                     </div>
                   </div>
                 </motion.div>
@@ -919,27 +967,251 @@ export default function PortfolioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="text-center py-4"
           >
-            <p className="text-gray-300 text-lg">And many more to come!</p>
+            <p className="text-gray-300">And many more to come!</p>
           </motion.div>
         </div>
       </section>
 
-      {/* Back to Top Button */}
-      <AnimatePresence>
-        {showBackToTop && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-all duration-300 shadow-lg z-50"
+      {/* Contact Section */}
+      <section className="bg-[url(/images/contact-section-bg.svg)] bg-cover bg-center pt-24">
+        <div className="max-w-4xl mx-auto px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <ChevronUp className="w-5 h-5" />
-          </motion.button>
-        )}
-      </AnimatePresence>
+            <div className="inline-block border-[7px] border-black px-12 py-[1.1rem]">
+              <h2 className="text-2xl font-bold text-black tracking-[0.3em]">
+                CONTACT
+              </h2>
+            </div>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-black text-xs pt-10 pb-4 max-w-2xl mx-auto leading-relaxed"
+          >
+            Nulla in velit a metus rhoncus tempus. Nulla congue nulla vel sem
+            varius finibus. Sed ornare sit amet lorem sed viverra, in vel uma
+            quis libero viverra facilisis ut ac est.
+          </motion.p>
+
+          {/* Decorative Separator */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
+            <Image
+              src={SeparatorImg}
+              alt="arrow-down"
+              width={100}
+              height={100}
+              className="w-32"
+            />
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-md mx-auto text-left pt-20 pb-12"
+          >
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
+              {/* Name Field */}
+              <div>
+                <input
+                  type="text"
+                  {...register("name", { required: "Field is required" })}
+                  className="border-b-4 border-l-4 border-black w-full bg-transparent outline-none px-2 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
+                  placeholder="ENTER YOUR NAME*"
+                />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.name.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Email Field */}
+              <div>
+                <input
+                  type="email"
+                  {...register("email", {
+                    required: "Field is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
+                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-2 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
+                  placeholder="ENTER YOUR EMAIL*"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Phone Field */}
+              <div>
+                <input
+                  type="tel"
+                  {...register("phone")}
+                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-2 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
+                  placeholder="PHONE NUMBER"
+                />
+              </div>
+
+              {/* Message Field */}
+              <div>
+                <textarea
+                  rows={4}
+                  {...register("message", { required: "Field is required" })}
+                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-2 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B] resize-none"
+                  placeholder="YOUR MESSAGE*"
+                />
+                {errors.message && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.message.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Submit Button */}
+              <div className="text-center pt-4">
+                <div className="flex items-center justify-center">
+                  <button
+                    type="submit"
+                    className="mx-4 border-x-2 border-black px-10 py-2 text-black text-xs font-semibold tracking-wider hover:opacity-70 transition-opacity duration-300"
+                  >
+                    SUBMIT
+                  </button>
+                </div>
+              </div>
+            </form>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer Section */}
+      <footer className="bg-[#1A1A1A] text-white py-12">
+        <div className="max-w-4xl mx-auto px-8 text-center">
+          {/* Back to Top */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <button
+              onClick={scrollToTop}
+              className="flex flex-col gap-2 items-center justify-center mx-auto text-white hover:opacity-70 transition-opacity duration-300"
+            >
+              <Image
+                src={BaselineDoubleArrow}
+                alt="Arrow Up"
+                className="w-3 h-3"
+              />
+              <span className="text-xs font-semibold tracking-wider">
+                BACK TO TOP
+              </span>
+            </button>
+          </motion.div>
+
+          {/* Social Media Icons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex justify-center gap-5 mb-8"
+          >
+            {/* Facebook */}
+            <Link
+              className="transition-all duration-300"
+              href="https://www.facebook.com/share/19g2uGoibD/"
+              target="_blank"
+            >
+              <Image
+                src={FacebookIcon}
+                alt="Facebook"
+                width={100}
+                height={100}
+                className="w-6 h-6"
+              />
+            </Link>
+
+            {/* LinkedIn */}
+            <Link
+              className="transition-all duration-300"
+              href="https://www.linkedin.com/in/numan-akram-founder/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={LinkedInIcon}
+                alt="linkedin"
+                width={100}
+                height={100}
+                className="w-6 h-6"
+              />
+            </Link>
+
+            {/* Instagram */}
+            <Link
+              className="transition-all duration-300"
+              href="https://www.instagram.com/numanakram143?utm_source=qr&igsh=MmgzOWtmdG5kb2Jo"
+              target="_blank"
+            >
+              <Image
+                className="w-6 h-6"
+                src={InstagramIcon}
+                alt="instagram"
+                width={100}
+                height={100}
+              />
+            </Link>
+
+            {/* Email */}
+            <Link
+              className=" transition-all duration-300"
+              href="mailto:mnumanakrambhatti@gmail.com"
+            >
+              <Image
+                src={EmailIcon}
+                alt="email"
+                width={100}
+                height={100}
+                className="w-6 h-6"
+              />
+            </Link>
+          </motion.div>
+
+          {/* Copyright */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-sm text-white"
+          >
+            ©2020 Numan Akram All Rights Reserved.
+          </motion.div>
+        </div>
+      </footer>
     </div>
   );
 }
