@@ -61,7 +61,7 @@ const learningSkills = [
 ];
 
 const otherSkills = [
-  { name: "ANGIELSKI\nC1/C2", icon: "/icons/angielski.png" },
+  { name: "ENGLISH", icon: "/icons/angielski.png" },
   { name: "HISZPANSKI\nB1/B2", icon: "/icons/hiszpanski.png" },
   { name: "C++", icon: "/icons/c++.png" },
   { name: "C", icon: "/icons/c.png" },
@@ -749,7 +749,7 @@ export default function PortfolioPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="inline-block border-[7px] border-black px-[5.4rem] py-5 mb-20">
+              <div className="inline-block border-[7px] border-black px-[5.3rem] py-5 mb-20">
                 <h2 className="text-2xl font-bold text-black tracking-[0.4em]">
                   SKILLS
                 </h2>
@@ -762,12 +762,12 @@ export default function PortfolioPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
               viewport={{ once: true }}
-              className="mb-16"
+              className="mb-[7.4rem]"
             >
-              <h3 className="text-2xl font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
+              <h3 className="text-2xl px-3 font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
                 USING NOW:
               </h3>
-              <div className="grid grid-cols-4 gap-24 place-content-between">
+              <div className="grid grid-cols-4 gap-x-24 gap-y-14 place-content-between">
                 {usingNowSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -782,7 +782,7 @@ export default function PortfolioPage() {
                       alt={skill.name}
                       width={80}
                       height={80}
-                      className="w-20 h-20"
+                      className="w-auto h-20"
                     />
                     <p className="text-[1.2rem] text-black font-light tracking-[0.1em]">
                       {skill.name}
@@ -798,12 +798,12 @@ export default function PortfolioPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
               viewport={{ once: true }}
-              className="mb-16"
+              className="mb-20"
             >
-              <h3 className="text-2xl font-bold text-black mb-8 text-left tracking-[0.2em]">
+              <h3 className="text-2xl px-3 font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
                 LEARNING:
               </h3>
-              <div className="grid grid-cols-4 gap-8">
+              <div className="grid grid-cols-4 gap-x-24 gap-y-14">
                 {learningSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -811,16 +811,16 @@ export default function PortfolioPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 * index, duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="flex flex-col items-center"
+                    className="flex flex-col items-center gap-6"
                   >
                     <Image
-                      className="w-20 h-20"
+                      className="w-auto h-20"
                       src={skill.icon}
                       alt={skill.name}
                       width={100}
                       height={100}
                     />
-                    <p className="text-xs font-semibold text-black tracking-wide">
+                    <p className="text-[1.2rem] text-black font-light tracking-[0.1em]">
                       {skill.name}
                     </p>
                   </motion.div>
@@ -835,10 +835,10 @@ export default function PortfolioPage() {
               transition={{ delay: 0.6, duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold text-black mb-8 text-left tracking-[0.2em]">
+              <h3 className="text-2xl px-3 font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
                 OTHER SKILLS:
               </h3>
-              <div className="grid grid-cols-4 gap-8">
+              <div className="grid grid-cols-4 gap-x-24 gap-8">
                 {otherSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -846,16 +846,16 @@ export default function PortfolioPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 * index, duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="flex flex-col items-center"
+                    className="flex flex-col items-center gap-5"
                   >
                     <Image
                       src={skill.icon}
                       alt={skill.name}
                       width={80}
                       height={80}
-                      className="w-20 h-20"
+                      className="w-auto h-20"
                     />
-                    <p className="text-xs font-semibold text-black tracking-wide whitespace-pre-line text-center">
+                    <p className="text-[1.2rem] text-black font-light tracking-[0.1em]">
                       {skill.name}
                     </p>
                   </motion.div>
@@ -898,14 +898,14 @@ export default function PortfolioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex justify-center pt-10 pb-12"
+            className="flex justify-center pt-8 pb-7"
           >
             <div className=" space-x-12 border-b-2 border-gray-700">
               {["ALL", "CODED", "DESIGNED"].map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setPortfolioFilter(filter)}
-                  className={`px-6 pb-3 text-xs font-semibold tracking-wider transition-all duration-300 relative ${
+                  className={`px-6 pb-2 text-xs font-semibold tracking-wider transition-all duration-300 relative ${
                     portfolioFilter === filter
                       ? "text-white"
                       : "text-gray-500 hover:text-gray-300"
@@ -915,7 +915,7 @@ export default function PortfolioPage() {
                   {portfolioFilter === filter && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"
+                      className="absolute -bottom-0.5 left-0 right-0 h-px bg-[#FFFFFF]"
                       initial={false}
                       transition={{
                         type: "spring",
@@ -930,7 +930,7 @@ export default function PortfolioPage() {
           </motion.div>
 
           {/* Portfolio Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1">
             <AnimatePresence mode="wait">
               {filteredPortfolio.map((item, index) => (
                 <motion.div
@@ -939,10 +939,10 @@ export default function PortfolioPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className="group cursor-pointer"
+                  className="group cursor-pointer w-full h-80"
                 >
-                  <div className="bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                    <div className="h-48">
+                  {/* <div className="bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2"> */}
+                    {/* <div className="h-48"> */}
                       <Image
                         src={item.image}
                         alt={item.title}
@@ -954,8 +954,8 @@ export default function PortfolioPage() {
                           target.src = "/images/projects/4.png";
                         }}
                       />
-                    </div>
-                  </div>
+                    {/* </div> */}
+                  {/* </div> */}
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -975,7 +975,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-[url(/images/contact-section-bg.svg)] bg-cover bg-center pt-24">
+      <section className="bg-[url(/images/contact-section-bg.svg)] bg-cover bg-center pt-28">
         <div className="max-w-4xl mx-auto px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -983,7 +983,7 @@ export default function PortfolioPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="inline-block border-[7px] border-black px-12 py-[1.1rem]">
+            <div className="inline-block border-[7px] border-black px-[3.4rem] py-[1.1rem]">
               <h2 className="text-2xl font-bold text-black tracking-[0.3em]">
                 CONTACT
               </h2>
@@ -997,9 +997,10 @@ export default function PortfolioPage() {
             viewport={{ once: true }}
             className="text-black text-xs pt-10 pb-4 max-w-2xl mx-auto leading-relaxed"
           >
-            Nulla in velit a metus rhoncus tempus. Nulla congue nulla vel sem
-            varius finibus. Sed ornare sit amet lorem sed viverra, in vel uma
-            quis libero viverra facilisis ut ac est.
+            Have a project in mind? Let's collaborate and bring your vision to life. 
+            Whether you need web development, mobile applications, or UI/UX design services, 
+            Softerio Solutions is here to help. Reach out to us today and let's create 
+            something extraordinary together.
           </motion.p>
 
           {/* Decorative Separator */}
@@ -1033,7 +1034,7 @@ export default function PortfolioPage() {
                 <input
                   type="text"
                   {...register("name", { required: "Field is required" })}
-                  className="border-b-4 border-l-4 border-black w-full bg-transparent outline-none px-2 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
+                  className="border-b-4 border-l-4 border-black w-full bg-transparent outline-none px-3 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
                   placeholder="ENTER YOUR NAME*"
                 />
                 {errors.name && (
@@ -1054,7 +1055,7 @@ export default function PortfolioPage() {
                       message: "Invalid email address",
                     },
                   })}
-                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-2 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
+                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-3 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
                   placeholder="ENTER YOUR EMAIL*"
                 />
                 {errors.email && (
@@ -1069,7 +1070,7 @@ export default function PortfolioPage() {
                 <input
                   type="tel"
                   {...register("phone")}
-                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-2 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
+                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-3 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
                   placeholder="PHONE NUMBER"
                 />
               </div>
@@ -1077,9 +1078,9 @@ export default function PortfolioPage() {
               {/* Message Field */}
               <div>
                 <textarea
-                  rows={4}
+                  rows={5}
                   {...register("message", { required: "Field is required" })}
-                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-2 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B] resize-none"
+                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-3 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B] resize-none"
                   placeholder="YOUR MESSAGE*"
                 />
                 {errors.message && (
