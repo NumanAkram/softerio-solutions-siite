@@ -17,6 +17,8 @@ import LinkedInIcon from "@/public/icons/linkedin-border.svg";
 import InstagramIcon from "@/public/icons/instagram.svg";
 import EmailIcon from "@/public/icons/email.svg";
 import WhatsappIcon from "@/public/icons/whatsapp-black.png";
+import PortfolioPicture from "@/public/images/picture.png";
+
 
 // Form data interface
 interface FormData {
@@ -51,6 +53,8 @@ const usingNowSkills = [
   { name: "BOOTSTRAP", icon: "/icons/bootstrap.svg" },
   { name: "GIT", icon: "/icons/git.png" },
   { name: "FIGMA", icon: "/icons/figma.svg" },
+  { name: "PYTHON", icon: "/icons/python.png" },
+  { name: "REACT NATIVE", icon: "/icons/react-native.png" },
 ];
 
 const learningSkills = [
@@ -62,9 +66,9 @@ const learningSkills = [
 
 const otherSkills = [
   { name: "ENGLISH", icon: "/icons/angielski.png" },
-  { name: "HISZPANSKI\nB1/B2", icon: "/icons/hiszpanski.png" },
-  { name: "C++", icon: "/icons/c++.png" },
-  { name: "C", icon: "/icons/c.png" },
+  { name: "ANGULAR", icon: "/icons/angular.png" },
+  { name: "ASP.NET", icon: "/icons/asp-dotnet.png" },
+  { name: "C#", icon: "/icons/c-sharp.png" },
 ];
 
 export default function PortfolioPage() {
@@ -486,7 +490,7 @@ export default function PortfolioPage() {
                 <Image src={Github} alt="GitHub" className="w-7 h-7" />
               </Link>
               <Link
-                href="https://www.linkedin.com/company/softerio-solutions/"
+                href="https://www.linkedin.com/in/numan-akram-founder/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-[2.7rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
@@ -529,14 +533,14 @@ export default function PortfolioPage() {
               initial={{ scale: 1.1, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="w-full  flex items-end rounded-lg pt-20"
+              className="w-full  flex items-end px-24 rounded-lg pt-20"
             >
               <Image
-                src="/images/Numan-bg-preview.png"
-                alt="Softerio Solutions"
+                src={PortfolioPicture}
+                alt="picture"
                 width={100}
                 height={100}
-                className="w-[40rem] object-contain"
+                className="w-[30rem]"
               />
             </motion.div>
           </motion.div>
@@ -939,22 +943,28 @@ export default function PortfolioPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className="group cursor-pointer w-full h-80"
+                  className="group cursor-pointer w-full h-[19rem]"
                 >
                   {/* <div className="bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2"> */}
-                    {/* <div className="h-48"> */}
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        width={400}
-                        height={300}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = "/images/projects/4.png";
-                        }}
-                      />
-                    {/* </div> */}
+                  {/* <div className="h-48"> */}
+                  <Link
+                    href={item.previewUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={400}
+                      height={300}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "/images/projects/4.png";
+                      }}
+                    />
+                  </Link>
+                  {/* </div> */}
                   {/* </div> */}
                 </motion.div>
               ))}
@@ -975,7 +985,10 @@ export default function PortfolioPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-[url(/images/contact-section-bg.svg)] bg-cover bg-center pt-28">
+      <section
+        className="bg-[url(/images/contact-section-bg.svg)] bg-cover bg-center pt-28"
+        id="contact_me"
+      >
         <div className="max-w-4xl mx-auto px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -997,10 +1010,10 @@ export default function PortfolioPage() {
             viewport={{ once: true }}
             className="text-black text-xs pt-10 pb-4 max-w-2xl mx-auto leading-relaxed"
           >
-            Have a project in mind? Let's collaborate and bring your vision to life. 
-            Whether you need web development, mobile applications, or UI/UX design services, 
-            Softerio Solutions is here to help. Reach out to us today and let's create 
-            something extraordinary together.
+            Have a project in mind? Let&apos;s collaborate and bring your vision
+            to life. Whether you need web development, mobile applications, or
+            UI/UX design services, Softerio Solutions is here to help. Reach out
+            to us today and let&apos;s create something extraordinary together.
           </motion.p>
 
           {/* Decorative Separator */}
