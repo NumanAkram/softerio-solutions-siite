@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
@@ -18,7 +18,6 @@ import InstagramIcon from "@/public/icons/instagram.svg";
 import EmailIcon from "@/public/icons/email.svg";
 import WhatsappIcon from "@/public/icons/whatsapp-black.png";
 import PortfolioPicture from "@/public/images/picture.png";
-
 
 // Form data interface
 interface FormData {
@@ -71,6 +70,234 @@ const otherSkills = [
   { name: "C#", icon: "/icons/c-sharp.png" },
 ];
 
+// Portfolio items data
+const portfolioItems = [
+  {
+    id: 1,
+    title: "LEGAL MOMO",
+    category: "CODED",
+    image: "/images/legal momo.jpg",
+    link: "#",
+    techStack: "Fast-API Python Next.js Typescript",
+    description:
+      "Created an advanced web platform for attorneys using FastAPI, Python, Next.js, and TypeScript, facilitating streamlined legal document handling and smart case analysis via automation.",
+  },
+  {
+    id: 2,
+    title: "Mr Singh's",
+    category: "DESIGNED",
+    image: "/images/mr-sing,s.jpg",
+    link: "https://mrsinghspizza.co.uk/food",
+    techStack: "React MySQL Laravel",
+    description:
+      "Built with React, Laravel, and MySQL, this full-stack app delivers a smooth, dynamic web interface, secure backend, and robust relational data management.",
+  },
+  {
+    id: 3,
+    title: "ZYAPPY Web",
+    category: "CODED",
+    image: "/images/zyapy-web.jpg",
+    link: "#",
+    techStack: "Vue.js MySQL Laravel",
+    description:
+      "Built with Vue.js, Laravel, and MySQL, this modern web app delivers a reactive UI, secure server-side API, and efficient relational data storage.",
+  },
+  {
+    id: 4,
+    title: "ZYAPPY Mobile-app",
+    category: "CODED",
+    image: "/images/zyappy-mobile-app.jpg",
+    link: "#",
+    techStack: "Mobile-app React-Native Nest.js FireBase PostgreSQL",
+    description:
+      "ZYAPPY is a mobile app built with React Native, Nest.js, Firebase, and PostgreSQL, enabling seamless ordering, real-time updates, and secure data management.",
+  },
+  {
+    id: 5,
+    title: "Exactflow",
+    category: "CODED",
+    image: "/images/sixn.png",
+    link: "https://www.exactflow.pl/en",
+    techStack: "Python Django React.js Node.js",
+    description:
+      "Created four advanced chatbots using Python, Django, React, and Node.js to streamline HR, customer service, sales, and support interactions with dynamic, context-driven responses in real time.",
+  },
+  {
+    id: 7,
+    title: "Shawarma Store",
+    category: "DESIGNED",
+    image: "/images/shawarma-store.jpg",
+    link: "#",
+    techStack: "Mobile-app React-Native Node.js FireBase MySQL",
+    description:
+      "Shawarma Store is a mobile app built with React Native, Node.js, Firebase, and SQL, enabling seamless ordering, real-time updates, and secure data management.",
+  },
+  {
+    id: 8,
+    title: "Signin - QEF",
+    category: "CODED",
+    image: "/images/5n.png",
+    link: "https://qef-fe.vercel.app/",
+    techStack: "Python Generative-AI LangChain OpenAI API",
+    description:
+      "Developed using Python, LangChain, and FastAPI, this project utilizes Generative AI to provide context-aware, real-time chatbot automation across various domains.",
+  },
+  {
+    id: 9,
+    title: "Janjapan",
+    category: "CODED",
+    image: "/images/threen.png",
+    link: "https://janjapan.com/",
+    techStack: "PHP Laravel Vue Node",
+    description:
+      "Built flexible, secure, and scalable web applications with PHP, Laravel, Vue.js, and Node.js, guaranteeing smooth front-end interaction and optimized back-end performance.",
+  },
+  {
+    id: 10,
+    title: "Jantrading",
+    category: "CODED",
+    image: "/images/twon.png",
+    link: "http://jantradingco.jp/",
+    techStack: "Laravel React Vue Node.js PHP",
+    description:
+      "Developed using Laravel, React, Vue.js, Node.js, and PHP to provide quick, secure, and interactive user experiences with real-time capabilities and smooth integration.",
+  },
+  {
+    id: 11,
+    title: "Samsungnac",
+    category: "CODED",
+    image: "/images/onen.png",
+    link: "http://samsungnac.co.za/",
+    techStack: "Python Django React.js Node.js",
+    description:
+      "Created four smart chatbots with Python, Django, React, and Node.js to automate HR, customer service, sales, and support dialogues with real-time, context-sensitive replies.",
+  },
+  {
+    id: 12,
+    title: "Global Esales",
+    category: "CODED",
+    image: "/images/global-united-esales.png",
+    link: "https://guesb2b.com/auth/sign-in",
+    techStack:
+      "React.js Next.js Tailwind-CSS TypeScript Node.js Express.js MongoDB Redis",
+    description:
+      "Experienced in building dynamic web applications using React.js, Next.js, Tailwind CSS, TypeScript, Node.js, Express.js, MongoDB, and Redis for scalable, high-performance solutions.",
+  },
+  {
+    id: 13,
+    title: "Janslawfirm",
+    category: "CODED",
+    image: "/images/46.png",
+    link: "https://janslawfirm.co.uk/",
+    techStack: "HTML5 CSS3 JavaScript .net C#",
+    description:
+      "Frontend built with HTML5, CSS3, and JavaScript. Backend powered by PHP with WordPress CMS for content management and dynamic functionality.",
+  },
+  {
+    id: 14,
+    title: "Nowfluence",
+    category: "CODED",
+    image: "/images/44.png",
+    link: "https://app.nowfluence.co/",
+    techStack: "React TypeScript Tailwind-CSS Node.js Express.js",
+    description:
+      "Developed a campaign management dashboard using React, TypeScript, and Tailwind CSS for the frontend, with Node.js/Express backend handling real-time data processing.",
+  },
+  {
+    id: 15,
+    title: "Getcontractorplus",
+    category: "CODED",
+    image: "/images/45.png",
+    link: "https://app.dev.getcontractorplus.com/auth/login",
+    techStack: "React TypeScript Tailwind-CSS Next.js",
+    description:
+      "Frontend built with React, TypeScript, and Tailwind CSS using Next.js framework. Backend powered by Node.js with Express.js, exposing REST APIs for client-server communication.",
+  },
+  {
+    id: 16,
+    title: "Zoho",
+    category: "CODED",
+    image: "/images/47.png",
+    link: "https://www.zoho.com/",
+    techStack:
+      "HTML5 CSS3 JavaScript React Java Node.js Cloud-Infrastructure-(AWS/Azure)",
+    description:
+      "Frontend built with HTML5, CSS3, JavaScript, and React for dynamic user interfaces. Backend powered by Java and Node.js with cloud infrastructure on AWS/Azure for scalability.",
+  },
+  {
+    id: 17,
+    title: "Onlinelegaladvise",
+    category: "CODED",
+    image: "/images/445.png",
+    link: "https://onlinelegaladvise.com/",
+    techStack: "HTML5 CSS3 JavaScript jQuery PHP MySQL",
+    description:
+      "Frontend built with HTML5, CSS3, JavaScript, and jQuery for interactive web pages. Backend powered by PHP with MySQL database for data management and server-side processing.",
+  },
+  {
+    id: 18,
+    title: "Servrhotels",
+    category: "CODED",
+    image: "/images/446.png",
+    link: "https://servrhotels.com/",
+    techStack: "HTML5 CSS3 JavaScript React Node.js Express.js",
+    description:
+      "Frontend built with HTML5, CSS3, JavaScript, and React for dynamic user interfaces. Backend powered by Node.js with Express.js framework for server-side processing and API management.",
+  },
+  {
+    id: 19,
+    title: "Jan Japan Invoice",
+    category: "CODED",
+    image: "/images/project-1.PNG",
+    link: "http://imgup.jan-japan.com/jans_invoice/",
+    techStack: "Express.js React.js Node.js",
+    description:
+      "Proficient in developing scalable, high-performance applications using Express.js for backend, React.js for dynamic UIs, and Node.js for server-side development.",
+  },
+  {
+    id: 20,
+    title: "Barney's",
+    category: "CODED",
+    image: "/images/project-2.PNG",
+    link: "#",
+    techStack: "Linux Apache MySQL PHP",
+    description:
+      "Skilled in developing robust web applications using Linux for server management, Apache for web hosting, MySQL for databases, and PHP for dynamic server-side scripting.",
+  },
+  {
+    id: 21,
+    title: "Grand Royale Group",
+    category: "CODED",
+    image: "/images/grandroyale (1).jpg",
+    link: "https://grandroyalegroup.com.au/",
+    techStack:
+      "WordPress Elemento-PRO Contact-Form-7 AI-Chatbot Ajax-Search-Lite",
+    description:
+      "Grand Royale Group provides B2B hospitality training via immersive WordPress simulations covering hotel management, events, and service excellence.",
+  },
+  {
+    id: 22,
+    title: "Ormith",
+    category: "CODED",
+    image: "/images/ormith.jpg",
+    link: "https://ormith.com/",
+    techStack: "WordPress Elementor Contact-Form-7 WooCommerce-WP Mail-SMTP",
+    description:
+      "A WordPress e-commerce site Ormith specializing in high-quality adhesive and sticky pad products for home and industrial use.",
+  },
+  {
+    id: 23,
+    title: "Saksfifthavenue",
+    category: "CODED",
+    image: "/images/4n.png",
+    link: "https://www.saksfifthavenue.com/",
+    techStack:
+      "React.js Next.js Tailwind CSS TypeScript Node.js Express.js MongoDB",
+    description:
+      "Experienced in building dynamic web applications using React.js, Next.js, Tailwind CSS, TypeScript, Node.js, Express.js, MongoDB, and Redis for scalable, high-performance solutions.",
+  },
+];
+
 export default function PortfolioPage() {
   const [portfolioFilter, setPortfolioFilter] = useState("ALL");
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -104,322 +331,12 @@ export default function PortfolioPage() {
     reset();
   };
 
-  // All portfolio items from the projects folder
-  const portfolioItems = [
-    {
-      id: 1,
-      title: "ExactFlow",
-      subtitle: "WEB DEVELOPMENT",
-      description: "Modern web application with Next.js and Python",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/exactflow.jpg",
-      client: "ExactFlow Corp",
-      languages: "next.js, typescript, python",
-      duration: "5 months",
-      budget: "$48000",
-      previewUrl: "https://www.exact-solutions.com/",
-    },
-    {
-      id: 2,
-      title: "BigSystema",
-      subtitle: "WEB DEVELOPMENT",
-      description: "Enterprise system built with Vue.js and Laravel",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/bigsystema.jpg",
-      client: "BigSystema Inc",
-      languages: "vue.js, nuxt 3, typescript, laravel",
-      duration: "6 months",
-      budget: "$58000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 3,
-      title: "FormBrick",
-      subtitle: "WEB DEVELOPMENT",
-      description: "Survey platform with modern tech stack",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/formbricks.png",
-      client: "FormBrick Ltd",
-      languages: "next.js, typescript, prisma, tailwind",
-      duration: "7 months",
-      budget: "$65000",
-      previewUrl: "https://formbricks.com/",
-    },
-    {
-      id: 4,
-      title: "BehindWords",
-      subtitle: "WEB DEVELOPMENT",
-      description: "Content management platform",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/behindwords.png",
-      client: "BehindWords Corp",
-      languages: "react, node.js, typescript, postgresql",
-      duration: "6 months",
-      budget: "$52000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 5,
-      title: "HackerNews Clone",
-      subtitle: "WEB DEVELOPMENT",
-      description: "News aggregation platform clone",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/SebastienChopin.png",
-      client: "HackerNews Inc",
-      languages: "nuxt.js, vue.js, typescript",
-      duration: "4 months",
-      budget: "$42000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 6,
-      title: "Nuxt DevTools",
-      subtitle: "DEVELOPMENT TOOLS",
-      description: "Developer tools for Nuxt.js framework",
-      category: "CODED",
-      type: "tools",
-      image: "/images/projects/devTTools.webp",
-      client: "Nuxt Corp",
-      languages: "nuxt.js, vue.js, typescript, unoCSS",
-      duration: "6 months",
-      budget: "$55000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 7,
-      title: "E-commerce Platform",
-      subtitle: "WEB DEVELOPMENT",
-      description: "Full-stack e-commerce solution",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/4.png",
-      client: "Tech Startup",
-      languages: "react, node.js, mongodb",
-      duration: "6 months",
-      budget: "$45000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 8,
-      title: "Mobile App",
-      subtitle: "MOBILE DEVELOPMENT",
-      description: "Cross-platform mobile application",
-      category: "CODED",
-      type: "mobile",
-      image: "/images/projects/5.png",
-      client: "App Company",
-      languages: "react native, firebase",
-      duration: "4 months",
-      budget: "$35000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 9,
-      title: "UI/UX Design",
-      subtitle: "DESIGN",
-      description: "Modern user interface design",
-      category: "DESIGNED",
-      type: "design",
-      image: "/images/projects/6.png",
-      client: "Design Studio",
-      languages: "figma, principle",
-      duration: "3 months",
-      budget: "$28000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 10,
-      title: "TechFlow",
-      subtitle: "WEB DEVELOPMENT",
-      description: "Advanced web application with modern tech stack",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/one.png",
-      client: "Project Corp",
-      languages: "react, typescript, node.js",
-      duration: "5 months",
-      budget: "$40000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 11,
-      title: "MobileSync",
-      subtitle: "MOBILE APP",
-      description: "Cross-platform mobile solution for data synchronization",
-      category: "CODED",
-      type: "mobile",
-      image: "/images/projects/two.png",
-      client: "Mobile Inc",
-      languages: "flutter, dart, firebase",
-      duration: "4 months",
-      budget: "$35000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 12,
-      title: "CreativeHub",
-      subtitle: "WEB DESIGN",
-      description: "Creative web design solution for creative agencies",
-      category: "DESIGNED",
-      type: "design",
-      image: "/images/projects/three.png",
-      client: "Design Corp",
-      languages: "figma, adobe xd",
-      duration: "3 months",
-      budget: "$25000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 13,
-      title: "NextGen",
-      subtitle: "WEB DEVELOPMENT",
-      description: "Full-stack web application",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/4n.png",
-      client: "Web Corp",
-      languages: "next.js, typescript, prisma",
-      duration: "6 months",
-      budget: "$50000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 14,
-      title: "AppMaster",
-      subtitle: "MOBILE DEVELOPMENT",
-      description: "Native mobile application",
-      category: "CODED",
-      type: "mobile",
-      image: "/images/projects/5n.png",
-      client: "Mobile Corp",
-      languages: "swift, kotlin, firebase",
-      duration: "5 months",
-      budget: "$45000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 15,
-      title: "EnterprisePro",
-      subtitle: "WEB DEVELOPMENT",
-      description: "Enterprise web solution",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/six.png",
-      client: "Enterprise Inc",
-      languages: "vue.js, laravel, mysql",
-      duration: "7 months",
-      budget: "$60000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 16,
-      title: "BrandVision",
-      subtitle: "DESIGN",
-      description: "Brand identity design",
-      category: "DESIGNED",
-      type: "design",
-      image: "/images/projects/7.png",
-      client: "Brand Corp",
-      languages: "photoshop, illustrator",
-      duration: "2 months",
-      budget: "$20000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 17,
-      title: "ShopHub",
-      subtitle: "WEB DEVELOPMENT",
-      description: "E-commerce platform",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/eight.png",
-      client: "E-commerce Inc",
-      languages: "react, node.js, mongodb",
-      duration: "6 months",
-      budget: "$55000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 18,
-      title: "SocialConnect",
-      subtitle: "MOBILE APP",
-      description: "Social media application",
-      category: "CODED",
-      type: "mobile",
-      image: "/images/projects/nine.png",
-      client: "Social Corp",
-      languages: "react native, firebase",
-      duration: "5 months",
-      budget: "$40000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 19,
-      title: "ContentPro",
-      subtitle: "WEB DEVELOPMENT",
-      description: "Content management system",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/ten.png",
-      client: "CMS Corp",
-      languages: "wordpress, php, mysql",
-      duration: "4 months",
-      budget: "$30000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 20,
-      title: "DesignSystem",
-      subtitle: "DESIGN",
-      description: "UI/UX design system",
-      category: "DESIGNED",
-      type: "design",
-      image: "/images/projects/eleven.png",
-      client: "Design System Inc",
-      languages: "figma, principle",
-      duration: "3 months",
-      budget: "$25000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 21,
-      title: "APIGateway",
-      subtitle: "WEB DEVELOPMENT",
-      description: "API development platform",
-      category: "CODED",
-      type: "development",
-      image: "/images/projects/twelve.png",
-      client: "API Corp",
-      languages: "node.js, express, postgresql",
-      duration: "5 months",
-      budget: "$45000",
-      previewUrl: "https://preview_of_project.com",
-    },
-    {
-      id: 22,
-      title: "FitTracker",
-      subtitle: "MOBILE DEVELOPMENT",
-      description: "Fitness tracking app",
-      category: "CODED",
-      type: "mobile",
-      image: "/images/projects/thirteen.png",
-      client: "Fitness Inc",
-      languages: "flutter, dart, firebase",
-      duration: "6 months",
-      budget: "$50000",
-      previewUrl: "https://preview_of_project.com",
-    },
-  ];
-
-  const filteredPortfolio =
-    portfolioFilter === "ALL"
-      ? portfolioItems
-      : portfolioItems.filter((item) => item.category === portfolioFilter);
+  const filteredPortfolio = useMemo(() => {
+    if (portfolioFilter === "ALL") {
+      return portfolioItems;
+    }
+    return portfolioItems.filter((item) => item.category === portfolioFilter);
+  }, [portfolioFilter]);
 
   return (
     <div className=" bg-[#D7D7D7]">
@@ -555,11 +472,11 @@ export default function PortfolioPage() {
           transition={{ delay: 1, duration: 0.8 }}
           className="grid grid-cols-12 gap-4 place-content-between"
         >
-          <div className="col-span-8 py-9 pl-[4.5rem]">
+          <div className="col-span-8 py-9 md:pl-[4.5rem] pl-8">
             <h3 className="text-2xl font-bold mb-2 tracking-wider">
               SOFTERIO SOLUTIONS
             </h3>
-            <p className="text-gray-300 text-xs leading-relaxed py-4">
+            <p className="text-gray-300 text-xs leading-relaxed md:py-4 py-2">
               We specialize in creating innovative web and mobile solutions that
               drive business growth. Our team of experts delivers cutting-edge
               technology solutions with a focus on user experience and
@@ -771,7 +688,7 @@ export default function PortfolioPage() {
               <h3 className="text-2xl px-3 font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
                 USING NOW:
               </h3>
-              <div className="grid grid-cols-4 gap-x-24 gap-y-14 place-content-between">
+              <div className="grid md:grid-cols-4 grid-cols-2 gap-x-24 gap-y-14 place-content-between">
                 {usingNowSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -807,7 +724,7 @@ export default function PortfolioPage() {
               <h3 className="text-2xl px-3 font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
                 LEARNING:
               </h3>
-              <div className="grid grid-cols-4 gap-x-24 gap-y-14">
+              <div className="grid md:grid-cols-4 grid-cols-2 gap-x-24 gap-y-14">
                 {learningSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -842,7 +759,7 @@ export default function PortfolioPage() {
               <h3 className="text-2xl px-3 font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
                 OTHER SKILLS:
               </h3>
-              <div className="grid grid-cols-4 gap-x-24 gap-8">
+              <div className="grid md:grid-cols-4 grid-cols-2 gap-x-24 gap-8">
                 {otherSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -945,27 +862,23 @@ export default function PortfolioPage() {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   className="group cursor-pointer w-full h-[19rem]"
                 >
-                  {/* <div className="bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2"> */}
-                  {/* <div className="h-48"> */}
                   <Link
-                    href={item.previewUrl}
+                    href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Image
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       src={item.image}
                       alt={item.title}
                       width={400}
                       height={300}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = "/images/projects/4.png";
                       }}
                     />
                   </Link>
-                  {/* </div> */}
-                  {/* </div> */}
                 </motion.div>
               ))}
             </AnimatePresence>

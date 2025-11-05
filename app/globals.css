@@ -381,3 +381,14 @@ html {
 * {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Hero image clip path - responsive */
+.hero-image-clip {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+@media (min-width: 1024px) {
+  .hero-image-clip {
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
