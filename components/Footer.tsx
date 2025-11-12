@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 dark:bg-black text-white transition-colors duration-300 relative overflow-hidden">
       {/* Robot Background Image */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-20">
         <Image
           src="/images/hero-bg.png"
           alt="Footer Background"
@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="space-y-6">
             <Link href="/" className="flex items-center space-x-2">
               <Image
-                src="/images/LOGO1.png"
+                src="/images/logo-removebg-preview.png"
                 alt="Company Logo"
                 width={200}
                 height={80}
@@ -225,17 +225,13 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-teal-500 flex-shrink-0 mt-1" />
                 <span className="text-gray-400">
-                  San Francisco City Hall, 1 Dr Carlton B Goodlett Pl,
-                  <br />
-                  San Francisco, CA 94102, US
+                  532 Pilot School Road Near Mehran Gym, Iqbal Town
                 </span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-teal-500 flex-shrink-0 mt-1" />
                 <span className="text-gray-400">
-                  Wahdat Colony Wahdat Road,
-                  <br />
-                  Falcon (Co Working Space), Lahore, Punjab 54000, PK
+                  Väinö Auerin Katu 1, 00560, Helsinki, Finland
                 </span>
               </div>
             </div>
@@ -243,31 +239,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 dark:border-gray-700 mt-12 pt-8">
+        <div className="mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
               © 2023 Softerio Solutions. All rights reserved.
             </p>
-            <div className="flex space-x-6 text-sm">
-              <Link
-                href="/privacy-policy"
-                className="text-gray-400 hover:text-teal-500 transition-colors duration-300"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-teal-500 transition-colors duration-300"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-teal-500 transition-colors duration-300"
-              >
-                Cookie Policy
-              </Link>
-            </div>
+        
           </div>
         </div>
       </div>

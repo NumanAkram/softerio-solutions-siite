@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <header className={`fixed top-0 w-full backdrop-blur-sm z-40 border-b transition-all duration-300 ${
       isScrolled 
-        ? 'bg-white/95 dark:bg-white/95 border-gray-200 dark:border-gray-200' 
+        ? 'bg-white/95 dark:bg-transparent border-gray-200 dark:border-transparent' 
         : 'bg-transparent border-transparent'
     }`}>
       <div className="container mx-auto px-6">
@@ -37,7 +37,7 @@ export default function Header() {
               width={200}
               height={80}
               className={`h-20 w-auto object-contain transition-all duration-300 mt-5 ${
-                isScrolled ? 'brightness-0' : 'brightness-0 invert'
+                isScrolled ? 'brightness-100' : 'brightness-0 invert'
               }`}
               priority
             />
@@ -46,27 +46,27 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <Link href="/" className={`transition-colors duration-300 ${
-              isScrolled ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-teal-400'
+              isScrolled ? 'text-white hover:text-teal-600' : 'text-white hover:text-teal-400'
             }`}>
               Home
             </Link>
             <Link href="/services" className={`transition-colors duration-300 ${
-              isScrolled ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-teal-400'
+              isScrolled ? 'text-white hover:text-teal-600' : 'text-white hover:text-teal-400'
             }`}>
               Services
             </Link>
             <Link href="/ai" className={`transition-colors duration-300 ${
-              isScrolled ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-teal-400'
+              isScrolled ? 'text-white hover:text-teal-600' : 'text-white hover:text-teal-400'
             }`}>
               AI
             </Link>
             <Link href="/portfolio" className={`transition-colors duration-300 ${
-              isScrolled ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-teal-400'
+              isScrolled ? 'text-white hover:text-teal-600' : 'text-white hover:text-teal-400'
             }`}>
               Portfolio
             </Link>
             <Link href="/testimonials" className={`transition-colors duration-300 ${
-              isScrolled ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-teal-400'
+              isScrolled ? 'text-white hover:text-teal-600' : 'text-white hover:text-teal-400'
             }`}>
               Testimonials
             </Link>
@@ -79,7 +79,7 @@ export default function Header() {
               <button
                 onClick={() => setIsMenuDropdownOpen(!isMenuDropdownOpen)}
                 className={`flex items-center transition-colors duration-300 ${
-                  isScrolled ? 'text-gray-800 hover:text-teal-600' : 'text-white hover:text-teal-400'
+                  isScrolled ? 'text-white hover:text-teal-600' : 'text-white hover:text-teal-400'
                 }`}
               >
                 Menu
@@ -120,7 +120,7 @@ export default function Header() {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`lg:hidden transition-colors duration-300 ${
-              isScrolled ? 'text-gray-800' : 'text-white'
+              isScrolled ? 'text-white' : 'text-white'
             }`}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

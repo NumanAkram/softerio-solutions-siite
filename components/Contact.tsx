@@ -1,48 +1,52 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-        setSubmitStatus('error');
+        setSubmitStatus("error");
       }
     } catch (error) {
-      setSubmitStatus('error');
+      setSubmitStatus("error");
     }
 
     setIsSubmitting(false);
@@ -56,13 +60,14 @@ export default function Contact() {
             Get In Touch
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
-            Ready to start your project? Let's discuss how we can help bring your vision to life.
+            Ready to start your project? Let's discuss how we can help bring
+            your vision to life.
           </p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12 max-w-7xl mx-auto">
           {/* Contact Info - Left side with slide-in animation */}
-          <motion.div 
+          <motion.div
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -79,8 +84,12 @@ export default function Contact() {
                     <Mail className="w-6 h-6 text-teal-500 dark:text-teal-400" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white transition-colors duration-300">Email</h4>
-                    <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">hr@softeriosolutions.com</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white transition-colors duration-300">
+                      Email
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
+                      hr@softeriosolutions.com
+                    </p>
                   </div>
                 </div>
                 <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-3 lg:space-y-0 lg:space-x-4 text-center lg:text-left">
@@ -88,8 +97,12 @@ export default function Contact() {
                     <Phone className="w-6 h-6 text-teal-500 dark:text-teal-400" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white transition-colors duration-300">Phone</h4>
-                    <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">+92 3036057586</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white transition-colors duration-300">
+                      Phone
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
+                      +92 3036057586
+                    </p>
                   </div>
                 </div>
                 <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-3 lg:space-y-0 lg:space-x-4 text-center lg:text-left">
@@ -97,8 +110,17 @@ export default function Contact() {
                     <MapPin className="w-6 h-6 text-teal-500 dark:text-teal-400" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white transition-colors duration-300">Address</h4>
-                    <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">Wahdat Colony Wahdat Road,<br />Falcon (Co Working Space), Lahore, Punjab 54000, PK</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white transition-colors duration-300">
+                      Address
+                    </h4>
+                    <ul className="list-disc pl-5 space-y-2 text-left">
+                      <li className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
+                        532 Pilot school road near mehran gym, Iqbal&nbsp;town
+                      </li>
+                      <li className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
+                        Väinö Auerin Katu 1, 00560, Helsinki,&nbsp;Finland
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -106,7 +128,7 @@ export default function Contact() {
           </motion.div>
 
           {/* Contact Form - Right side with slide-in animation */}
-          <motion.div 
+          <motion.div
             initial={{ x: 100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
@@ -117,11 +139,14 @@ export default function Contact() {
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center lg:text-left transition-colors duration-300">
                 Send us a Message
               </h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300"
+                    >
                       Name *
                     </label>
                     <input
@@ -136,7 +161,10 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300"
+                    >
                       Email *
                     </label>
                     <input
@@ -153,7 +181,10 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300"
+                  >
                     Subject *
                   </label>
                   <input
@@ -169,7 +200,10 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300"
+                  >
                     Message *
                   </label>
                   <textarea
@@ -185,15 +219,16 @@ export default function Contact() {
                 </div>
 
                 {/* Submit Status Messages */}
-                {submitStatus === 'success' && (
+                {submitStatus === "success" && (
                   <div className="bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 px-4 py-3 rounded-lg transition-colors duration-300">
                     Message sent successfully! We'll get back to you soon.
                   </div>
                 )}
 
-                {submitStatus === 'error' && (
+                {submitStatus === "error" && (
                   <div className="bg-red-100 dark:bg-red-900 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-300 px-4 py-3 rounded-lg transition-colors duration-300">
-                    Something went wrong. Please try again or contact us directly.
+                    Something went wrong. Please try again or contact us
+                    directly.
                   </div>
                 )}
 

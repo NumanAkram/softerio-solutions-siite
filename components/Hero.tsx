@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Particles from "react-tsparticles";
 import { Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
@@ -29,36 +29,41 @@ export default function Hero() {
         threshold: 0.5,
       }
     );
-  
+
     const heroSection = document.getElementById("home");
     if (heroSection) observer.observe(heroSection);
-  
+
     return () => {
       if (heroSection) observer.unobserve(heroSection);
     };
   }, []);
 
   return (
-    <section 
+    <section
       id="home"
       className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-teal-900 dark:from-black dark:via-gray-900 dark:to-teal-900 overflow-hidden transition-colors duration-300"
     >
       {/* Background Image */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-60">
         <Image
           src="/images/hero-bg.png"
-          alt="Hero Background"
-          fill
-          className="object-cover object-center"
-          style={{
-            backgroundAttachment: "fixed",
-          }}
+          alt="hero-image"
+          width={100}
+          height={100}
+          className="md:block hidden w-full h-full object-cover"
+        />
+        <Image
+          src="/images/hero-bg-mobile.png"
+          alt="hero-image-mobile"
+          width={100}
+          height={100}
+          className="md:hidden block w-full h-full object-cover"
         />
       </div>
 
       {/* Particles Container */}
       <div className="absolute inset-0 h-full w-full overflow-hidden">
-        {isHeroVisible && (   
+        {isHeroVisible && (
           <Particles
             id="tsparticles"
             init={particlesInit}
@@ -118,26 +123,19 @@ export default function Hero() {
       <div className="container mx-auto px-6 pt-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
           {/* Left Content */}
-          <div className="order-2 lg:order-1 space-y-6 md:pr-8 lg:pr-14 max-w-[40.2rem] pt-20 ml-16">
-            <h1 className="text-[30px] sm:text-[38px] md:text-[40px] lg:text-[45px] font-semibold leading-tight animate-fade-in-up [animation-delay:100ms]">
+          <div className="order-2 lg:order-1 space-y-6 xl:pr-14 pr-0 max-w-[40.2rem] pt-20 xl:ml-10 lg:ml-9 ml-6">
+            <h1 className="flex flex-col text-[30px] sm:text-[38px] md:text-[40px] lg:text-[45px] font-semibold leading-tight animate-fade-in-up [animation-delay:100ms]">
               <span className="text-white">Delivering </span>
               <span className="text-teal-400">Soft IT Solutions</span>
             </h1>
             <p className="text-lg text-white animate-fade-in-up [animation-delay:300ms]">
-              Softerio Solutions provides customizable, SEO-friendly software solutions tailored to your business needs. We turn your ideas into exceptional digital experiences.
+              Softerio Solutions provides customizable, SEO-friendly software
+              solutions tailored to your business needs. We turn your ideas into
+              exceptional digital experiences.
             </p>
-          </div>
-
-          {/* Right Content - Card with Hover Effect */}
-          <div className="order-1 lg:order-2 relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-transform hover:scale-[1.02] duration-500">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/20 to-transparent"></div>
-            </div>
           </div>
         </div>
       </div>
-
-
     </section>
   );
 }
