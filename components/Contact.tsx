@@ -53,15 +53,18 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section
+      className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300"
+      id="getInTouch"
+    >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
             Get In Touch
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
-            Ready to start your project? Let's discuss how we can help bring
-            your vision to life.
+            Ready to start your project? Let&apos;s discuss how we can help
+            bring your vision to life.
           </p>
         </div>
 
@@ -221,7 +224,7 @@ export default function Contact() {
                 {/* Submit Status Messages */}
                 {submitStatus === "success" && (
                   <div className="bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 px-4 py-3 rounded-lg transition-colors duration-300">
-                    Message sent successfully! We'll get back to you soon.
+                    Message sent successfully! We&apos;ll get back to you soon.
                   </div>
                 )}
 

@@ -9,24 +9,33 @@ import {
   Mail,
   Phone,
   MapPin,
-  MessageCircle,
 } from "lucide-react";
+import heroBgImg from "@/public/images/hero-bg.png";
+import heroBgMobileImg from "@/public/images/hero-bg-mobile1.png";
   
 export default function Footer() {
   return (
     <footer className="bg-gray-900 dark:bg-black text-white transition-colors duration-300 relative overflow-hidden">
       {/* Robot Background Image */}
       <div className="absolute inset-0 opacity-20">
+         <Image
+          className="xl:block hidden w-full h-full object-cover"
+          src={heroBgImg}
+          alt="hero-image"
+          width={100}
+          height={100}
+        />
         <Image
-          src="/images/hero-bg.png"
-          alt="Footer Background"
-          fill
-          className="object-cover object-center"
+          className="xl:hidden block w-full h-full object-cover"
+          src={heroBgMobileImg}
+          alt="hero-image-mobile"
+          width={100}
+          height={100}
         />
       </div>
 
       <div className="container mx-auto px-6 py-16 relative z-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-8">
           {/* Company Info */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center space-x-2">

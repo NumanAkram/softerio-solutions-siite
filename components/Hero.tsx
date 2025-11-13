@@ -7,6 +7,8 @@ import { ArrowRight } from "lucide-react";
 import Particles from "react-tsparticles";
 import { Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
+import heroBgImg from "@/public/images/hero-bg.png";
+import heroBgMobileImg from "@/public/images/hero-bg-mobile1.png";
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
@@ -46,18 +48,18 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 opacity-60">
         <Image
-          src="/images/hero-bg.png"
+          className="xl:block hidden w-full h-full object-cover"
+          src={heroBgImg}
           alt="hero-image"
           width={100}
           height={100}
-          className="md:block hidden w-full h-full object-cover"
         />
         <Image
-          src="/images/hero-bg-mobile.png"
+          className="xl:hidden block w-full h-full object-cover"
+          src={heroBgMobileImg}
           alt="hero-image-mobile"
           width={100}
           height={100}
-          className="md:hidden block w-full h-full object-cover"
         />
       </div>
 
@@ -123,7 +125,7 @@ export default function Hero() {
       <div className="container mx-auto px-6 pt-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
           {/* Left Content */}
-          <div className="order-2 lg:order-1 space-y-6 xl:pr-14 pr-0 max-w-[40.2rem] pt-20 xl:ml-10 lg:ml-9 ml-6">
+          <div className="order-2 lg:order-1 space-y-6 xl:pr-14 pr-0 max-w-[40.2rem] pt-20 xl:ml-10 lg:ml-9 md:ml-6 ml-2">
             <h1 className="flex flex-col text-[30px] sm:text-[38px] md:text-[40px] lg:text-[45px] font-semibold leading-tight animate-fade-in-up [animation-delay:100ms]">
               <span className="text-white">Delivering </span>
               <span className="text-teal-400">Soft IT Solutions</span>
