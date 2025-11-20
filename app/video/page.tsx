@@ -1,52 +1,125 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Play } from "lucide-react";
 
-export default function VideoPage() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+// Vimeo Player type declaration
+declare global {
+  interface Window {
+    Vimeo: any;
+  }
+}
 
-  const enterFullscreen = () => {
-    if (videoRef.current) {
-      if (videoRef.current.requestFullscreen) {
-        videoRef.current.requestFullscreen();
-      } else if ((videoRef.current as any).webkitRequestFullscreen) {
-        // Safari
-        (videoRef.current as any).webkitRequestFullscreen();
-      } else if ((videoRef.current as any).mozRequestFullScreen) {
-        // Firefox
-        (videoRef.current as any).mozRequestFullScreen();
-      } else if ((videoRef.current as any).msRequestFullscreen) {
-        // IE/Edge
-        (videoRef.current as any).msRequestFullscreen();
+export default function VideoPage() {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const playerRef = useRef<any>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlayerReady, setIsPlayerReady] = useState(false);
+  const vimeoVideoId = "1138616529"; // Extracted from your URL
+
+  // Load Vimeo Player API
+  useEffect(() => {
+    const initializePlayer = () => {
+      if (iframeRef.current && window.Vimeo) {
+        try {
+          playerRef.current = new window.Vimeo.Player(iframeRef.current);
+
+          // Listen for play event
+          playerRef.current.on("play", () => {
+            setIsPlaying(true);
+          });
+
+          // Listen for pause event
+          playerRef.current.on("pause", () => {
+            setIsPlaying(false);
+          });
+
+          // Listen for ended event
+          playerRef.current.on("ended", () => {
+            setIsPlaying(false);
+          });
+
+          setIsPlayerReady(true);
+        } catch (error) {
+          console.error("Error initializing Vimeo player:", error);
+        }
       }
+    };
+
+    // Wait a bit for iframe to be ready, then check for Vimeo API
+    const timer = setTimeout(() => {
+      // Check if Vimeo Player script is already loaded
+      if (window.Vimeo) {
+        initializePlayer();
+        return;
+      }
+
+      // Load Vimeo Player script
+      const script = document.createElement("script");
+      script.src = "https://player.vimeo.com/api/player.js";
+      script.async = true;
+      script.onload = () => {
+        initializePlayer();
+      };
+      document.body.appendChild(script);
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      // Cleanup
+      if (playerRef.current) {
+        try {
+          playerRef.current.destroy();
+        } catch (error) {
+          // Ignore cleanup errors
+        }
+      }
+    };
+  }, []);
+
+  const enterFullscreen = async (element: HTMLElement) => {
+    try {
+      if (element.requestFullscreen) {
+        await element.requestFullscreen();
+      } else if ((element as any).webkitRequestFullscreen) {
+        // Safari
+        await (element as any).webkitRequestFullscreen();
+      } else if ((element as any).mozRequestFullScreen) {
+        // Firefox
+        await (element as any).mozRequestFullScreen();
+      } else if ((element as any).msRequestFullscreen) {
+        // IE/Edge
+        await (element as any).msRequestFullscreen();
+      }
+    } catch (error) {
+      console.error("Error entering fullscreen:", error);
     }
   };
 
   const handlePlayButtonClick = async () => {
-    if (videoRef.current) {
-      // Enter fullscreen first
-      enterFullscreen();
+    if (playerRef.current && isPlayerReady && iframeRef.current) {
+      try {
+        // First, enter fullscreen mode
+        await enterFullscreen(iframeRef.current);
 
-      // Wait a bit for fullscreen to activate, then play
-      setTimeout(() => {
-        if (videoRef.current) {
-          videoRef.current.play();
-          setIsPlaying(true);
-        }
-      }, 100);
+        // Wait a moment for fullscreen to activate, then play
+        setTimeout(async () => {
+          if (playerRef.current) {
+            try {
+              // Play the video
+              await playerRef.current.play();
+              setIsPlaying(true);
+            } catch (error) {
+              console.error("Error playing video:", error);
+            }
+          }
+        }, 300);
+      } catch (error) {
+        console.error("Error in play button click:", error);
+      }
     }
-  };
-
-  const handleVideoPlay = () => {
-    setIsPlaying(true);
-  };
-
-  const handleVideoPause = () => {
-    setIsPlaying(false);
   };
 
   return (
@@ -82,8 +155,6 @@ export default function VideoPage() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-300/20 rounded-full blur-3xl"></div>
       </div>
 
-      <Header />
-
       <main className="pt-20 pb-16 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Page Header */}
@@ -104,25 +175,21 @@ export default function VideoPage() {
           <div className="max-w-5xl mx-auto">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
               <div className="aspect-video w-full relative">
-                <video
-                  ref={videoRef}
-                  className="w-full h-full object-cover"
-                  controls
-                  loop
-                  playsInline
-                  onPlay={handleVideoPlay}
-                  onPause={handleVideoPause}
-                >
-                  <source
-                    src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                    type="video/mp4"
-                  />
-                  <source
-                    src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-                    type="video/mp4"
-                  />
-                  Your browser does not support the video tag.
-                </video>
+                <iframe
+                  ref={iframeRef}
+                  src={`https://player.vimeo.com/video/${vimeoVideoId}?autoplay=0&loop=0&controls=1&muted=0`}
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
 
                 {/* Custom Play Button Overlay - Center */}
                 {!isPlaying && (
@@ -132,7 +199,7 @@ export default function VideoPage() {
                   >
                     <button
                       className="bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 rounded-full p-4 sm:p-6 shadow-2xl transition-all duration-300 hover:scale-110 transform"
-                      aria-label="Play video in fullscreen"
+                      aria-label="Play video"
                     >
                       <Play
                         className="w-12 h-12 sm:w-16 sm:h-16 text-teal-600 dark:text-teal-400 ml-1"
