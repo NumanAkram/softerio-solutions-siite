@@ -50,10 +50,10 @@ const plans = [
 
 export default function PricingPlans() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <div className="container mx-auto px-6">
+    <section className="py-16 sm:py-20 md:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 w-full overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 max-w-full">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Pricing Plans
           </h2>
@@ -64,13 +64,13 @@ export default function PricingPlans() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12 max-w-md lg:max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6 md:py-8">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 ${
+              className={`relative bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 my-4 sm:my-6 ${
                 plan.popular
-                  ? "border-4 border-teal-500 scale-105"
+                  ? "border-4 border-teal-500 lg:scale-105"
                   : "border border-gray-200 dark:border-gray-700"
               }`}
             >

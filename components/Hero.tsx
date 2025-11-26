@@ -43,7 +43,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-teal-900 dark:from-black dark:via-gray-900 dark:to-teal-900 overflow-hidden transition-colors duration-300"
+      className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-teal-900 dark:from-black dark:via-gray-900 dark:to-teal-900 overflow-hidden transition-colors duration-300 w-full"
     >
       {/* Background Image */}
       <div className="absolute inset-0 opacity-60">
@@ -119,22 +119,25 @@ export default function Hero() {
       <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
 
       {/* Blur Effects for Depth */}
-      <div className="absolute -top-8 -right-8 w-40 h-40 rounded-full blur-3xl bg-blue-500/10"></div>
-      <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full blur-3xl bg-indigo-500/10"></div>
+      <div className="absolute top-0 right-0 w-40 h-40 rounded-full blur-3xl bg-blue-500/10"></div>
+      <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full blur-3xl bg-indigo-500/10"></div>
 
-      <div className="container mx-auto px-6 pt-24 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
-          {/* Left Content */}
-          <div className="order-2 lg:order-1 space-y-6 xl:pr-14 pr-0 max-w-[40.2rem] pt-20 xl:ml-10 lg:ml-9 md:ml-6 ml-2">
-            <h1 className="flex flex-col text-[30px] sm:text-[38px] md:text-[40px] lg:text-[45px] font-semibold leading-tight animate-fade-in-up [animation-delay:100ms]">
-              <span className="text-white">Delivering </span>
-              <span className="text-teal-400">Soft IT Solutions</span>
-            </h1>
-            <p className="text-lg text-white animate-fade-in-up [animation-delay:300ms]">
-              Softerio Solutions provides customizable, SEO-friendly software
-              solutions tailored to your business needs. We turn your ideas into
-              exceptional digital experiences.
-            </p>
+      {/* Container Wrapper for Content */}
+      <div className="w-full flex justify-center relative z-10">
+        <div className="w-full max-w-[1920px] px-4 sm:px-6 pt-24 overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen w-full">
+            {/* Left Content */}
+            <div className="order-2 lg:order-1 space-y-4 sm:space-y-6 pr-0 xl:pr-14 w-full max-w-full sm:max-w-[40.2rem] pt-12 sm:pt-16 md:pt-20 ml-0 sm:ml-2 md:ml-6 lg:ml-9 xl:ml-10">
+              <h1 className="flex flex-col text-[28px] sm:text-[32px] md:text-[38px] lg:text-[45px] font-semibold leading-tight animate-fade-in-up [animation-delay:100ms]">
+                <span className="text-white">Delivering </span>
+                <span className="text-teal-400">Soft IT Solutions</span>
+              </h1>
+              <p className="text-base sm:text-lg text-white animate-fade-in-up [animation-delay:300ms]">
+                Softerio Solutions provides customizable, SEO-friendly software
+                solutions tailored to your business needs. We turn your ideas into
+                exceptional digital experiences.
+              </p>
+            </div>
           </div>
         </div>
       </div>

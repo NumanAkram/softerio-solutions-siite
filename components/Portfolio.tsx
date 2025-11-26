@@ -396,20 +396,20 @@ export default function Portfolio() {
   };
 
   return (
-    <section className="py-20 bg-gray-100 dark:bg-gray-900 transition-all duration-500">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gray-100 dark:bg-gray-900 transition-all duration-500 w-full overflow-hidden flex justify-center">
+      <div className="w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div
           className={`text-left md:text-center mb-16 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white  mb-8 transition-colors duration-300 leading-tight">
-            My{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 dark:from-white dark:to-white">
-              Portfolio
-            </span>
-          </h2>
+           <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 dark:text-white mb-8 transition-colors duration-300 leading-tight">
+             My{" "}
+             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-800 to-gray-600 dark:from-white dark:to-gray-300">
+               Portfolio
+             </span>
+           </h2>
 
           {/* Filter Buttons */}
           <div className="flex flex-wrap justify-start md:justify-center gap-3 sm:gap-4 mb-12">
@@ -450,8 +450,8 @@ export default function Portfolio() {
                 onMouseEnter={() => setHoveredItem(item.id)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
-                {/* Portfolio Item Card */}
-                <div className="relative overflow-hidden rounded-xl shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-gray-800/20 dark:group-hover:shadow-teal-600/20 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                 {/* Portfolio Item Card */}
+                 <div className="relative overflow-hidden rounded-xl shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-gray-800/20 dark:group-hover:shadow-teal-600/20 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
                   {/* Project Main Image */}
                   <div className="relative overflow-hidden">
                     <Image

@@ -15,7 +15,7 @@ import heroBgMobileImg from "@/public/images/hero-bg-mobile1.png";
   
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white transition-colors duration-300 relative overflow-hidden">
+    <footer className="bg-gray-900 dark:bg-black text-white transition-colors duration-300 relative overflow-hidden w-full">
       {/* Robot Background Image */}
       <div className="absolute inset-0 opacity-20">
          <Image
@@ -34,8 +34,8 @@ export default function Footer() {
         />
       </div>
 
-      <div className="container mx-auto px-6 py-16 relative z-10">
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center space-x-2">

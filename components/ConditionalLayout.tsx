@@ -13,11 +13,11 @@ export default function ConditionalLayout({
   const isPortfolioPage = pathname === "/portfolio";
 
   return (
-    <>
+    <div className="w-full overflow-x-hidden">
       {!isPortfolioPage && <Header />}
       {children}
       {!isPortfolioPage && <Footer />}
-    </>
+    </div>
   );
 }
 

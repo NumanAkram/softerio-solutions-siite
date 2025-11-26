@@ -28,7 +28,7 @@ export default function RootLayout({
         />
         <link rel="icon" href="/icons/logo.png" type="image/png" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} overflow-x-hidden max-w-full`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -1,20 +1,28 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import PortfolioLogo from "@/public/icons/logo.png";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Close mobile menu when pathname changes
+  useEffect(() => {
+    setIsMobileOpen(false);
+  }, [pathname]);
   return (
-    <div className="absolute top-0 z-50 py-12 lg:pl-[12.3rem] md:pl-10 pl-6 lg:pr-[8.6rem] md:pr-10 pr-6 flex justify-between items-center w-full">
-      <Image
-        className="w-[4rem] h-[4rem]"
-        src={PortfolioLogo}
-        width={100}
-        height={100}
-        alt="logo"
-      />
+    <div className="absolute top-0 z-50 w-full flex justify-center">
+      <div className="w-full max-w-[1920px] py-12 lg:pl-[12.3rem] md:pl-10 pl-6 lg:pr-[8.6rem] md:pr-10 pr-6 flex justify-between items-center">
+        <Image
+          className="w-[4rem] h-[4rem]"
+          src={PortfolioLogo}
+          width={100}
+          height={100}
+          alt="logo"
+        />
 
       {/* Desktop nav */}
       <motion.nav
@@ -55,20 +63,21 @@ export const Navbar = () => {
         </Link>
       </motion.nav>
 
-      {/* Hamburger for md and below */}
-      <button
-        aria-label="Open menu"
-        onClick={() => setIsMobileOpen(true)}
-        className="lg:hidden text-white focus:outline-none"
-      >
-        <span className="block w-7 h-0.5 bg-white mb-1.5" />
-        <span className="block w-7 h-0.5 bg-white mb-1.5" />
-        <span className="block w-7 h-0.5 bg-white" />
-      </button>
+          {/* Hamburger for md and below */}
+        <button
+          aria-label="Open menu"
+          onClick={() => setIsMobileOpen(true)}
+          className="lg:hidden text-white focus:outline-none"
+        >
+          <span className="block w-7 h-0.5 bg-white mb-1.5" />
+          <span className="block w-7 h-0.5 bg-white mb-1.5" />
+          <span className="block w-7 h-0.5 bg-white" />
+        </button>
+      </div>
 
       {/* Mobile menu overlay */}
       {isMobileOpen && (
-        <div className="fixed inset-0 z-[60] flex flex-col h-fit">
+        <div className="fixed inset-0 z-[60] flex flex-col h-screen">
           {/* Top bar */}
           <div className="flex items-center justify-between bg-black/95 px-6 py-4">
             <Image src={PortfolioLogo} alt="logo" className="w-10 h-10" />
@@ -82,8 +91,27 @@ export const Navbar = () => {
           </div>
 
           {/* Links area */}
-          <div className="flex-1 bg-[#00000095] backdrop-blur-[1px] text-white">
-            <div className="flex flex-col items-center text-sm font-semibold space-y-8 pt-8">
+          <div className="flex-1 text-white relative overflow-hidden">
+            {/* Background Image - Full coverage */}
+            <Image 
+              src="/images/mobile-drop down-banner.jpg"
+              alt="Background"
+              fill
+              className="object-cover object-bottom"
+              priority
+            />
+            
+            {/* Overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]"></div>
+            
+            <div className="relative z-10 flex flex-col items-center justify-center text-sm font-semibold space-y-8 h-full">
+              <Link
+                href="/"
+                onClick={() => setIsMobileOpen(false)}
+                className="hover:text-gray-300 transition-colors duration-300"
+              >
+                Home
+              </Link>
               <Link
                 href="#about"
                 onClick={() => setIsMobileOpen(false)}
@@ -109,7 +137,7 @@ export const Navbar = () => {
           </div>
 
           {/* Bottom CTA */}
-          <div className="bg-white text-black text-center py-4">
+          <div className="bg-white text-black text-center py-4 relative z-20">
             <Link
               href="#contact_me"
               onClick={() => setIsMobileOpen(false)}

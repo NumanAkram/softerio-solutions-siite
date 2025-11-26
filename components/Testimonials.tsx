@@ -46,8 +46,8 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
-      <div className="container mx-auto px-6">
+    <section className="py-20 bg-white dark:bg-gray-800 transition-colors duration-300 w-full overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 max-w-full">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -59,14 +59,14 @@ export default function Testimonials() {
         </div>
 
         {/* Testimonials Carousel */}
-        <div className="relative max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 md:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className={`bg-gray-50 dark:bg-gray-700 rounded-2xl p-8 transition-all duration-500 ${
-                  index === currentIndex ? 'scale-105 shadow-2xl' : 'scale-100 shadow-lg'
-                }`}
+                 className={`bg-gray-50 dark:bg-gray-700 rounded-2xl p-6 sm:p-8 transition-all duration-500 ${
+                   index === currentIndex ? 'sm:scale-105 shadow-2xl' : 'scale-100 shadow-lg'
+                 }`}
               >
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">

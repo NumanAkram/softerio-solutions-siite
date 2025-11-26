@@ -94,7 +94,7 @@ export default function Statistics() {
       id="statistics-section"
       className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6 max-w-full">
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div

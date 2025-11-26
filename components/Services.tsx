@@ -94,9 +94,9 @@ export default function Services() {
   };
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
+    <section className="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300 w-full">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 w-full">
         <Image
           src="/images/tech-pattern.jpg"
           alt="Tech Pattern Background"
@@ -107,12 +107,12 @@ export default function Services() {
       </div>
 
       {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden z-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-teal-100/20 dark:bg-teal-900/20 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-100/20 dark:bg-blue-900/20 rounded-full translate-x-1/2 translate-y-1/2"></div>
+      <div className="absolute inset-0 overflow-hidden z-0 w-full">
+        <div className="absolute top-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-teal-100/20 dark:bg-teal-900/20 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-blue-100/20 dark:bg-blue-900/20 rounded-full translate-x-1/2 translate-y-1/2"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-full overflow-hidden">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
@@ -124,18 +124,20 @@ export default function Services() {
         </div>
 
         {/* Services Grid - 3 cards per row, centered */}
-        <div className="flex justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
+        <div className="flex justify-center px-4 sm:px-6 md:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl w-full">
             {services.map((service, index) => (
               <div
                 key={index}
-                className={`service-card bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg group cursor-pointer transition-all duration-500 ease-in-out hover:scale-105 hover:rotate-0 hover:z-10 flex flex-col items-center text-center ${
-                  index === 2 ? "transform-none" : "rotate-[-3deg]"
-                }`}
-                style={{
-                  width: "320px",
-                  height: "320px",
-                }}
+                 className={`service-card bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg group cursor-pointer transition-all duration-500 ease-in-out hover:scale-105 hover:rotate-0 hover:z-10 flex flex-col items-center text-center ${
+                   index === 2 ? "transform-none" : "rotate-[-3deg]"
+                 }`}
+                 style={{
+                   width: "100%",
+                   maxWidth: "320px",
+                   height: "auto",
+                   minHeight: "320px",
+                 }}
               >
                 <div className="mb-3 flex flex-col items-center">
                   <div className="service-icon w-16 h-16 bg-teal-100 dark:bg-teal-900 rounded-lg flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">

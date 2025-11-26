@@ -16,7 +16,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden">
       <ThemeToggle />
       <Hero />
       <Services />

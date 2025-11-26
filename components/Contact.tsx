@@ -54,10 +54,10 @@ export default function Contact() {
 
   return (
     <section
-      className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300"
+      className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300 w-full overflow-hidden"
       id="getInTouch"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6 max-w-full">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
             Get In Touch

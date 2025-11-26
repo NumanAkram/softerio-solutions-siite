@@ -57,9 +57,9 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300 w-full">
       {/* Background Image on Right Side - Hidden on mobile, visible on larger screens */}
-      <div className="hidden md:block absolute top-0 right-0 w-1/2 h-full z-0">
+      <div className="hidden md:block absolute top-0 right-0 w-1/2 h-full z-0 max-w-full">
         <Image
           src="/images/tech-pattern2.png"
           alt="Technology pattern background"

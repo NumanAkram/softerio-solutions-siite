@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuDropdownOpen, setIsMenuDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,11 +21,17 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu when pathname changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setIsMenuDropdownOpen(false);
+  }, [pathname]);
+
   return (
     <header
       className={`fixed top-0 w-full backdrop-blur-sm z-40 border-b transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 dark:bg-transparent border-gray-200 dark:border-transparent"
+          ? "bg-white/98 dark:bg-gray-900/95 border-gray-200 dark:border-gray-700 shadow-md"
           : "bg-transparent border-transparent"
       }`}
     >
@@ -37,7 +45,7 @@ export default function Header() {
               width={100}
               height={100}
               className={`md:w-20 w-16 md:h-20 h-16 transition-all duration-300 md:mt-5 mt-0 ${
-                isScrolled ? "brightness-100" : "brightness-0 invert"
+                isScrolled ? "brightness-100 dark:brightness-0 dark:invert" : "brightness-0 invert"
               }`}
               priority
             />
@@ -49,7 +57,7 @@ export default function Header() {
               href="/"
               className={`transition-colors duration-300 ${
                 isScrolled
-                  ? "text-white hover:text-teal-600"
+                  ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                   : "text-white hover:text-teal-400"
               }`}
             >
@@ -59,7 +67,7 @@ export default function Header() {
               href="/services"
               className={`transition-colors duration-300 ${
                 isScrolled
-                  ? "text-white hover:text-teal-600"
+                  ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                   : "text-white hover:text-teal-400"
               }`}
             >
@@ -69,7 +77,7 @@ export default function Header() {
               href="/ai"
               className={`transition-colors duration-300 ${
                 isScrolled
-                  ? "text-white hover:text-teal-600"
+                  ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                   : "text-white hover:text-teal-400"
               }`}
             >
@@ -79,7 +87,7 @@ export default function Header() {
               href="/portfolio"
               className={`transition-colors duration-300 ${
                 isScrolled
-                  ? "text-white hover:text-teal-600"
+                  ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                   : "text-white hover:text-teal-400"
               }`}
             >
@@ -89,7 +97,7 @@ export default function Header() {
               href="/testimonials"
               className={`transition-colors duration-300 ${
                 isScrolled
-                  ? "text-white hover:text-teal-600"
+                  ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                   : "text-white hover:text-teal-400"
               }`}
             >
@@ -106,7 +114,7 @@ export default function Header() {
                   onClick={() => setIsMenuDropdownOpen(!isMenuDropdownOpen)}
                   className={`flex items-center transition-colors duration-300 ${
                     isScrolled
-                      ? "text-white hover:text-teal-600"
+                      ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                       : "text-white hover:text-teal-400"
                   }`}
                 >
@@ -145,7 +153,7 @@ export default function Header() {
                 href="/video"
                 className={`flex items-center gap-2 transition-colors duration-300 ${
                   isScrolled
-                    ? "text-white hover:text-teal-600"
+                    ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                     : "text-white hover:text-teal-400"
                 }`}
               >
@@ -186,7 +194,7 @@ export default function Header() {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`lg:hidden transition-colors duration-300 ${
-              isScrolled ? "text-white" : "text-white"
+              isScrolled ? "text-gray-900 dark:text-white" : "text-white"
             }`}
           >
             {isMenuOpen ? (
@@ -201,15 +209,15 @@ export default function Header() {
         {isMenuOpen && (
           <div
             className={`lg:hidden mt-2 rounded-lg p-4 transition-colors duration-300 ${
-              isScrolled ? "bg-white/90" : "bg-transparent"
+              isScrolled ? "bg-white/98 dark:bg-gray-900/95 shadow-xl border border-gray-200 dark:border-gray-700" : "bg-gray-900/95"
             }`}
           >
             <nav className="flex flex-col space-y-4">
               <Link
                 href="/"
-                className={`transition-colors duration-300 ${
+                className={`transition-colors duration-300 text-base ${
                   isScrolled
-                    ? "text-gray-800 hover:text-teal-600"
+                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
                     : "text-white hover:text-teal-400"
                 }`}
               >
@@ -217,9 +225,9 @@ export default function Header() {
               </Link>
               <Link
                 href="/services"
-                className={`transition-colors duration-300 ${
+                className={`transition-colors duration-300 text-base ${
                   isScrolled
-                    ? "text-gray-800 hover:text-teal-600"
+                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
                     : "text-white hover:text-teal-400"
                 }`}
               >
@@ -227,9 +235,9 @@ export default function Header() {
               </Link>
               <Link
                 href="/ai"
-                className={`transition-colors duration-300 ${
+                className={`transition-colors duration-300 text-base ${
                   isScrolled
-                    ? "text-gray-800 hover:text-teal-600"
+                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
                     : "text-white hover:text-teal-400"
                 }`}
               >
@@ -237,9 +245,9 @@ export default function Header() {
               </Link>
               <Link
                 href="/portfolio"
-                className={`transition-colors duration-300 ${
+                className={`transition-colors duration-300 text-base ${
                   isScrolled
-                    ? "text-gray-800 hover:text-teal-600"
+                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
                     : "text-white hover:text-teal-400"
                 }`}
               >
@@ -247,9 +255,9 @@ export default function Header() {
               </Link>
               <Link
                 href="/testimonials"
-                className={`transition-colors duration-300 ${
+                className={`transition-colors duration-300 text-base ${
                   isScrolled
-                    ? "text-gray-800 hover:text-teal-600"
+                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
                     : "text-white hover:text-teal-400"
                 }`}
               >
@@ -257,9 +265,9 @@ export default function Header() {
               </Link>
               <Link
                 href="/team"
-                className={`transition-colors duration-300 ${
+                className={`transition-colors duration-300 text-base ${
                   isScrolled
-                    ? "text-gray-800 hover:text-teal-600"
+                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
                     : "text-white hover:text-teal-400"
                 }`}
               >
@@ -267,9 +275,9 @@ export default function Header() {
               </Link>
               <Link
                 href="/news"
-                className={`transition-colors duration-300 ${
+                className={`transition-colors duration-300 text-base ${
                   isScrolled
-                    ? "text-gray-800 hover:text-teal-600"
+                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
                     : "text-white hover:text-teal-400"
                 }`}
               >
@@ -277,7 +285,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/quotes"
-                className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded-full font-medium transition-colors text-center"
+                className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 text-center"
               >
                 GET QUOTES
               </Link>

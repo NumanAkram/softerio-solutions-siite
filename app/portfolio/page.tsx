@@ -339,36 +339,36 @@ export default function PortfolioPage() {
   }, [portfolioFilter]);
 
   return (
-    <div className=" bg-[#D7D7D7]">
+    <div className="bg-[#D7D7D7] w-full overflow-x-hidden">
       {/* Hero Section - Reduced Height */}
-      <section className="">
+      <section className="w-full overflow-hidden flex justify-center">
         {/* <div className="bg-gradient-to-br from-gray-200 to-gray-300"></div> */}
         <Navbar />
         {/* Diagonal Split */}
-        <div className="flex h-screen">
+        <div className="flex flex-col md:flex-row h-auto md:h-screen w-full max-w-[1920px]">
           {/* Left Side - Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             //2xl:pl-[13.2rem] xl:pl-[6rem] pl-[5rem]
-            className="w-1/2 pt-40  flex flex-col justify-center lg:pl-[13.2rem] md:pl-28 pl-20"
+            className="w-full md:w-1/2 pt-24 md:pt-40 px-6 sm:px-8 md:px-12 lg:px-20 xl:pl-[13.2rem] flex flex-col justify-center"
           >
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-3xl text-black font-bold mb-3"
+              className="text-2xl sm:text-3xl text-black font-bold mb-3"
             >
               Hi, I am
             </motion.p>
 
-            <div className="pt-10 pb-20">
+            <div className="pt-6 md:pt-10 pb-12 md:pb-20">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className="lg:text-6xl text-2xl text-black font-bold mb-2 -mr-7"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black font-bold mb-2"
               >
                 Numan Akram
               </motion.h1>
@@ -377,7 +377,7 @@ export default function PortfolioPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.8 }}
-                className="text-xl text-[#909090] font-bold mb-8"
+                className="text-lg sm:text-xl text-[#909090] font-bold mb-8"
               >
                 CEO of Softerio Solutions
               </motion.p>
@@ -388,48 +388,48 @@ export default function PortfolioPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.8 }}
-              className="flex space-x-6"
+              className="flex space-x-4 sm:space-x-6 mb-12 sm:mb-16 md:mb-20"
             >
               <Link
                 href="mailto:mnumanakrambhatti@gmail.com"
-                className="w-[2.7rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
+                className="w-10 h-10 sm:w-[2.7rem] sm:h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
                 style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)" }}
               >
-                <Image src={AtTheRate} alt="Email" className="w-7 h-7" />
+                <Image src={AtTheRate} alt="Email" className="w-6 h-6 sm:w-7 sm:h-7" />
               </Link>
               <Link
                 href="https://github.com/muhammadnuman-eng"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-[2.7rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
+                className="w-10 h-10 sm:w-[2.7rem] sm:h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
                 style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)" }}
               >
-                <Image src={Github} alt="GitHub" className="w-7 h-7" />
+                <Image src={Github} alt="GitHub" className="w-6 h-6 sm:w-7 sm:h-7" />
               </Link>
               <Link
                 href="https://www.linkedin.com/in/numan-akram-founder/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-[2.7rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
+                className="w-10 h-10 sm:w-[2.7rem] sm:h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
                 style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)" }}
               >
                 <Image
                   src={LinkedIn}
                   alt="LinkedIn"
-                  className="w-[1.8rem] h-[1.8rem]"
+                  className="w-5 h-5 sm:w-[1.8rem] sm:h-[1.8rem]"
                 />
               </Link>
               <Link
                 href="https://wa.me/923036057586"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-[2.7rem] h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
+                className="w-10 h-10 sm:w-[2.7rem] sm:h-11 bg-[#C4C4C4] flex items-center justify-center hover:bg-gray-400 transition-all duration-300 hover:scale-110"
                 style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)" }}
               >
                 <Image
                   src={WhatsappIcon}
-                  alt="LinkedIn"
-                  className="w-[1.8rem] h-[1.8rem]"
+                  alt="WhatsApp"
+                  className="w-5 h-5 sm:w-[1.8rem] sm:h-[1.8rem]"
                 />
               </Link>
             </motion.div>
@@ -440,43 +440,48 @@ export default function PortfolioPage() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-[77%] bg-black relative overflow-hidden"
+            className="w-full md:w-[77%] bg-black relative overflow-hidden min-h-[400px] md:min-h-0"
             style={{
-              clipPath: "polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)",
+              clipPath: typeof window !== 'undefined' && window.innerWidth >= 768 ? "polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)" : "none",
             }}
           >
-            {/* <div className="w-full h-full flex items-center justify-center relative"> */}
             <motion.div
               initial={{ scale: 1.1, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="w-full  flex items-end px-24 rounded-lg pt-20"
+              className="w-full h-full flex items-end justify-center md:justify-end px-8 sm:px-12 md:px-16 lg:px-20 xl:px-24 pb-0"
             >
-              <Image
-                src={PortfolioPicture}
-                alt="picture"
-                width={100}
-                height={100}
-                className="w-[30rem]"
-              />
+              <div className="relative w-full max-w-[20rem] sm:max-w-[24rem] md:max-w-[28rem] lg:max-w-[32rem] xl:max-w-[35rem]">
+                <Image
+                  src={PortfolioPicture}
+                  alt="picture"
+                  width={500}
+                  height={650}
+                  className="w-full h-auto object-cover object-top"
+                  style={{
+                    maxHeight: '85vh',
+                    objectPosition: 'center top'
+                  }}
+                />
+              </div>
             </motion.div>
           </motion.div>
         </div>
 
         {/* Bottom Section - Black Background with Reduced Height */}
       </section>
-      <section className="bg-[#1D1D1D] text-white h-[34vh] bg-opacity-100 overflow-hidden">
+      <section className="bg-[#1D1D1D] text-white min-h-[280px] md:h-[34vh] bg-opacity-100 overflow-hidden w-full flex justify-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
-          className="grid grid-cols-12 gap-4 place-content-between"
+          className="grid grid-cols-1 md:grid-cols-12 gap-4 place-content-between w-full max-w-[1920px]"
         >
-          <div className="col-span-8 py-9 md:pl-[4.5rem] pl-8">
-            <h3 className="text-2xl font-bold mb-2 tracking-wider">
+          <div className="md:col-span-8 py-6 md:py-9 px-6 md:pl-[4.5rem]">
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 tracking-wider">
               SOFTERIO SOLUTIONS
             </h3>
-            <p className="text-gray-300 text-xs leading-relaxed md:py-4 py-2">
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed py-2 md:py-4">
               We specialize in creating innovative web and mobile solutions that
               drive business growth. Our team of experts delivers cutting-edge
               technology solutions with a focus on user experience and
@@ -497,9 +502,9 @@ export default function PortfolioPage() {
             </button>
           </div>
 
-          <div className="col-span-4 flex justify-end">
+          <div className="hidden md:flex md:col-span-4 justify-center md:justify-end">
             <Image
-              className="w-[90%]"
+              className="w-[70%] sm:w-[80%] md:w-[90%]"
               src="/icons/logo-itb.svg"
               alt="Softerio Solutions"
               width={100}
@@ -509,13 +514,14 @@ export default function PortfolioPage() {
         </motion.div>
       </section>
 
-      <div className="bg-[url(/images/aboutme-&-skills-section-bg.svg)] bg-cover bg-center">
+      <div className="bg-[url(/images/aboutme-&-skills-section-bg.svg)] bg-cover bg-center w-full overflow-hidden">
         {/* About Section */}
-        <section
-          id="about"
-          className="min-h-screen flex flex-col justify-center pt-28"
-        >
-          <div className="max-w-4xl mx-auto px-8 text-center">
+        <div className="w-full flex justify-center">
+          <section
+            id="about"
+            className="flex flex-col justify-center pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-8 sm:pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 md:px-8 w-full max-w-[1920px]"
+          >
+          <div className="max-w-4xl mx-auto w-full text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -659,19 +665,21 @@ export default function PortfolioPage() {
               />
             </motion.div>
           </div>
-        </section>
+          </section>
+        </div>
 
         {/* Skills Section */}
-        <section id="skills" className="min-h-screen py-20">
-          <div className="max-w-[47rem] mx-auto px-8 text-center">
+        <div className="w-full flex justify-center">
+          <section id="skills" className="py-12 sm:py-16 md:py-20 lg:py-24 w-full max-w-[1920px]">
+          <div className="max-w-[47rem] mx-auto px-4 sm:px-6 md:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="inline-block border-[7px] border-black px-[5.3rem] py-5 mb-20">
-                <h2 className="text-2xl font-bold text-black tracking-[0.4em]">
+              <div className="inline-block border-4 sm:border-[7px] border-black px-8 sm:px-16 md:px-[5.3rem] py-3 sm:py-5 mb-12 sm:mb-16 md:mb-20">
+                <h2 className="text-xl sm:text-2xl font-bold text-black tracking-[0.2em] sm:tracking-[0.4em]">
                   SKILLS
                 </h2>
               </div>
@@ -683,12 +691,12 @@ export default function PortfolioPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
               viewport={{ once: true }}
-              className="mb-[7.4rem]"
+              className="mb-12 sm:mb-20 md:mb-[7.4rem]"
             >
-              <h3 className="text-2xl px-3 font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
+              <h3 className="text-lg sm:text-xl md:text-2xl px-3 font-bold text-black mb-8 sm:mb-12 md:mb-[4.5rem] text-left tracking-[0.1em] sm:tracking-[0.2em]">
                 USING NOW:
               </h3>
-              <div className="grid md:grid-cols-4 grid-cols-2 gap-x-24 gap-y-14 place-content-between">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 sm:gap-x-12 md:gap-x-24 gap-y-8 sm:gap-y-10 md:gap-y-14 place-content-between">
                 {usingNowSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -719,12 +727,12 @@ export default function PortfolioPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
               viewport={{ once: true }}
-              className="mb-20"
+              className="mb-12 sm:mb-16 md:mb-20"
             >
-              <h3 className="text-2xl px-3 font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
+              <h3 className="text-lg sm:text-xl md:text-2xl px-3 font-bold text-black mb-8 sm:mb-12 md:mb-[4.5rem] text-left tracking-[0.1em] sm:tracking-[0.2em]">
                 LEARNING:
               </h3>
-              <div className="grid md:grid-cols-4 grid-cols-2 gap-x-24 gap-y-14">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 sm:gap-x-12 md:gap-x-24 gap-y-8 sm:gap-y-10 md:gap-y-14">
                 {learningSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -756,10 +764,10 @@ export default function PortfolioPage() {
               transition={{ delay: 0.6, duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl px-3 font-bold text-black mb-[4.5rem] text-left tracking-[0.2em]">
+              <h3 className="text-lg sm:text-xl md:text-2xl px-3 font-bold text-black mb-8 sm:mb-12 md:mb-[4.5rem] text-left tracking-[0.1em] sm:tracking-[0.2em]">
                 OTHER SKILLS:
               </h3>
-              <div className="grid md:grid-cols-4 grid-cols-2 gap-x-24 gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 sm:gap-x-12 md:gap-x-24 gap-y-6 sm:gap-y-8">
                 {otherSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -784,18 +792,20 @@ export default function PortfolioPage() {
               </div>
             </motion.div>
           </div>
-        </section>
+          </section>
+        </div>
       </div>
 
       {/* Portfolio Section - Black Background Connected with Portfolio Heading */}
-      <section id="portfolio" className="bg-[#1A1A1A]">
-        {/* Hero Image */}
-        <motion.div
+      <section id="portfolio" className="bg-[#1A1A1A] w-full overflow-hidden flex justify-center">
+        <div className="w-full max-w-[1920px]">
+          {/* Hero Image */}
+          <motion.div
           initial={{ opacity: 0, scale: 1.1 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="h-64 bg-cover bg-center bg-[url(/images/portfolio-bg.png)]"
+          className="h-48 sm:h-56 md:h-64 bg-cover bg-center bg-[url(/images/portfolio-bg.png)]"
         >
           <div className="flex items-center justify-center h-full">
             <motion.div
@@ -803,9 +813,9 @@ export default function PortfolioPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
               viewport={{ once: true }}
-              className="inline-block border-[7px] border-black px-16 py-3"
+              className="inline-block border-4 sm:border-[7px] border-black px-8 sm:px-12 md:px-16 py-2 sm:py-3"
             >
-              <h2 className="text-2xl font-bold text-black px-4 py-2 tracking-[0.3em]">
+              <h2 className="text-xl sm:text-2xl font-bold text-black px-2 sm:px-4 py-1 sm:py-2 tracking-[0.2em] sm:tracking-[0.3em]">
                 PORTFOLIO
               </h2>
             </motion.div>
@@ -819,14 +829,14 @@ export default function PortfolioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex justify-center pt-8 pb-7"
+            className="flex justify-center pt-6 sm:pt-8 pb-5 sm:pb-7 px-4"
           >
-            <div className=" space-x-12 border-b-2 border-gray-700">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-12 border-b-2 border-gray-700 pb-2">
               {["ALL", "CODED", "DESIGNED"].map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setPortfolioFilter(filter)}
-                  className={`px-6 pb-2 text-xs font-semibold tracking-wider transition-all duration-300 relative ${
+                  className={`px-4 sm:px-6 pb-2 text-xs sm:text-sm font-semibold tracking-wider transition-all duration-300 relative ${
                     portfolioFilter === filter
                       ? "text-white"
                       : "text-gray-500 hover:text-gray-300"
@@ -851,7 +861,7 @@ export default function PortfolioPage() {
           </motion.div>
 
           {/* Portfolio Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 px-2 sm:px-0">
             <AnimatePresence mode="wait">
               {filteredPortfolio.map((item, index) => (
                 <motion.div
@@ -895,22 +905,24 @@ export default function PortfolioPage() {
             <p className="text-gray-300">And many more to come!</p>
           </motion.div>
         </div>
+        </div>
       </section>
 
       {/* Contact Section */}
       <section
-        className="bg-[url(/images/contact-section-bg.svg)] bg-cover bg-center pt-28"
+        className="bg-[url(/images/contact-section-bg.svg)] bg-cover bg-center pt-16 sm:pt-20 md:pt-28 px-4 sm:px-6 md:px-8 w-full overflow-hidden flex justify-center"
         id="contact_me"
       >
-        <div className="max-w-4xl mx-auto px-8 text-center">
+        <div className="w-full max-w-[1920px]">
+          <div className="max-w-4xl mx-auto w-full text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="inline-block border-[7px] border-black px-[3.4rem] py-[1.1rem]">
-              <h2 className="text-2xl font-bold text-black tracking-[0.3em]">
+            <div className="inline-block border-4 sm:border-[7px] border-black px-8 sm:px-12 md:px-[3.4rem] py-3 sm:py-[1.1rem]">
+              <h2 className="text-xl sm:text-2xl font-bold text-black tracking-[0.2em] sm:tracking-[0.3em]">
                 CONTACT
               </h2>
             </div>
@@ -921,7 +933,7 @@ export default function PortfolioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-black text-xs pt-10 pb-4 max-w-2xl mx-auto leading-relaxed"
+            className="text-black text-xs sm:text-sm pt-6 sm:pt-8 md:pt-10 pb-3 sm:pb-4 max-w-2xl mx-auto leading-relaxed px-4"
           >
             Have a project in mind? Let&apos;s collaborate and bring your vision
             to life. Whether you need web development, mobile applications, or
@@ -952,15 +964,15 @@ export default function PortfolioPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
             viewport={{ once: true }}
-            className="max-w-md mx-auto text-left pt-20 pb-12"
+            className="max-w-md mx-auto text-left pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-10 md:pb-12 px-4"
           >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8 md:space-y-10">
               {/* Name Field */}
               <div>
                 <input
                   type="text"
                   {...register("name", { required: "Field is required" })}
-                  className="border-b-4 border-l-4 border-black w-full bg-transparent outline-none px-3 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
+                  className="border-b-2 sm:border-b-4 border-l-2 sm:border-l-4 border-black w-full bg-transparent outline-none px-2 sm:px-3 pt-2 pb-1 placeholder:pt-2 text-black text-sm sm:text-base placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
                   placeholder="ENTER YOUR NAME*"
                 />
                 {errors.name && (
@@ -981,7 +993,7 @@ export default function PortfolioPage() {
                       message: "Invalid email address",
                     },
                   })}
-                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-3 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
+                  className="w-full bg-transparent border-b-2 sm:border-b-4 border-l-2 sm:border-l-4 border-black outline-none px-2 sm:px-3 pt-2 pb-1 placeholder:pt-2 text-black text-sm sm:text-base placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
                   placeholder="ENTER YOUR EMAIL*"
                 />
                 {errors.email && (
@@ -996,7 +1008,7 @@ export default function PortfolioPage() {
                 <input
                   type="tel"
                   {...register("phone")}
-                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-3 pt-2 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
+                  className="w-full bg-transparent border-b-2 sm:border-b-4 border-l-2 sm:border-l-4 border-black outline-none px-2 sm:px-3 pt-2 pb-1 placeholder:pt-2 text-black text-sm sm:text-base placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B]"
                   placeholder="PHONE NUMBER"
                 />
               </div>
@@ -1006,7 +1018,7 @@ export default function PortfolioPage() {
                 <textarea
                   rows={5}
                   {...register("message", { required: "Field is required" })}
-                  className="w-full bg-transparent border-b-4 border-l-4 border-black outline-none px-3 pb-1 placeholder:pt-2 text-black placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B] resize-none"
+                  className="w-full bg-transparent border-b-2 sm:border-b-4 border-l-2 sm:border-l-4 border-black outline-none px-2 sm:px-3 pb-1 placeholder:pt-2 text-black text-sm sm:text-base placeholder:text-xs placeholder:font-bold placeholder-[#8B8B8B] resize-none"
                   placeholder="YOUR MESSAGE*"
                 />
                 {errors.message && (
@@ -1021,7 +1033,7 @@ export default function PortfolioPage() {
                 <div className="flex items-center justify-center">
                   <button
                     type="submit"
-                    className="mx-4 border-x-2 border-black px-10 py-2 text-black text-xs font-semibold tracking-wider hover:opacity-70 transition-opacity duration-300"
+                    className="mx-2 sm:mx-4 border-x-2 border-black px-6 sm:px-10 py-2 text-black text-xs sm:text-sm font-semibold tracking-wider hover:opacity-70 transition-opacity duration-300"
                   >
                     SUBMIT
                   </button>
@@ -1030,11 +1042,13 @@ export default function PortfolioPage() {
             </form>
           </motion.div>
         </div>
+        </div>
       </section>
 
       {/* Footer Section */}
-      <footer className="bg-[#1A1A1A] text-white py-12">
-        <div className="max-w-4xl mx-auto px-8 text-center">
+      <footer className="bg-[#1A1A1A] text-white py-8 sm:py-10 md:py-12 w-full overflow-hidden flex justify-center">
+        <div className="w-full max-w-[1920px]">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center w-full">
           {/* Back to Top */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1052,7 +1066,7 @@ export default function PortfolioPage() {
                 alt="Arrow Up"
                 className="w-3 h-3"
               />
-              <span className="text-xs font-semibold tracking-wider">
+              <span className="text-xs sm:text-sm font-semibold tracking-wider">
                 BACK TO TOP
               </span>
             </button>
@@ -1137,6 +1151,7 @@ export default function PortfolioPage() {
           >
             ©2020 Numan Akram All Rights Reserved.
           </motion.div>
+        </div>
         </div>
       </footer>
     </div>
