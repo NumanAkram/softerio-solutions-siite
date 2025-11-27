@@ -29,10 +29,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full backdrop-blur-sm z-40 border-b transition-all duration-300 ${
+      className={`fixed top-0 w-full backdrop-blur-sm z-40 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/98 dark:bg-gray-900/95 border-gray-200 dark:border-gray-700 shadow-md"
-          : "bg-transparent border-transparent"
+          ? "bg-white/98 dark:bg-gray-900/95 shadow-md"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto md:px-6 px-4">
@@ -40,13 +40,16 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Image
-              src="/images/logo-removebg-preview.png"
+              src="/images/logo-removebg-preview.webp"
               alt="Company Logo"
               width={100}
               height={100}
-              className={`md:w-20 w-16 md:h-20 h-16 transition-all duration-300 md:mt-5 mt-0 ${
-                isScrolled ? "brightness-100 dark:brightness-0 dark:invert" : "brightness-0 invert"
-              }`}
+              className="md:w-20 w-16 md:h-20 h-16 transition-all duration-300 md:mt-5 mt-0"
+              style={{
+                filter: isScrolled 
+                  ? 'brightness(0) saturate(100%) invert(56%) sepia(97%) saturate(1184%) hue-rotate(141deg) brightness(95%) contrast(101%)' 
+                  : 'brightness(0) saturate(100%) invert(56%) sepia(97%) saturate(1184%) hue-rotate(141deg) brightness(95%) contrast(101%)'
+              }}
               priority
             />
           </Link>
@@ -193,9 +196,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`lg:hidden transition-colors duration-300 ${
-              isScrolled ? "text-gray-900 dark:text-white" : "text-white"
-            }`}
+            className="lg:hidden transition-colors duration-300 text-teal-500 hover:text-teal-600"
           >
             {isMenuOpen ? (
               <X className="md:h-10 h-9 md:w-10 w-9" />
@@ -208,78 +209,48 @@ export default function Header() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div
-            className={`lg:hidden mt-2 rounded-lg p-4 transition-colors duration-300 ${
-              isScrolled ? "bg-white/98 dark:bg-gray-900/95 shadow-xl border border-gray-200 dark:border-gray-700" : "bg-gray-900/95"
-            }`}
+            className="lg:hidden mt-2 rounded-lg p-4 bg-slate-900 shadow-2xl border border-slate-700"
           >
             <nav className="flex flex-col space-y-4">
               <Link
                 href="/"
-                className={`transition-colors duration-300 text-base ${
-                  isScrolled
-                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
-                    : "text-white hover:text-teal-400"
-                }`}
+                className="transition-colors duration-300 text-base text-white hover:text-teal-400"
               >
                 Home
               </Link>
               <Link
                 href="/services"
-                className={`transition-colors duration-300 text-base ${
-                  isScrolled
-                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
-                    : "text-white hover:text-teal-400"
-                }`}
+                className="transition-colors duration-300 text-base text-white hover:text-teal-400"
               >
                 Services
               </Link>
               <Link
                 href="/ai"
-                className={`transition-colors duration-300 text-base ${
-                  isScrolled
-                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
-                    : "text-white hover:text-teal-400"
-                }`}
+                className="transition-colors duration-300 text-base text-white hover:text-teal-400"
               >
                 AI
               </Link>
               <Link
                 href="/portfolio"
-                className={`transition-colors duration-300 text-base ${
-                  isScrolled
-                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
-                    : "text-white hover:text-teal-400"
-                }`}
+                className="transition-colors duration-300 text-base text-white hover:text-teal-400"
               >
                 Portfolio
               </Link>
               <Link
                 href="/testimonials"
-                className={`transition-colors duration-300 text-base ${
-                  isScrolled
-                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
-                    : "text-white hover:text-teal-400"
-                }`}
+                className="transition-colors duration-300 text-base text-white hover:text-teal-400"
               >
                 Testimonials
               </Link>
               <Link
                 href="/team"
-                className={`transition-colors duration-300 text-base ${
-                  isScrolled
-                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
-                    : "text-white hover:text-teal-400"
-                }`}
+                className="transition-colors duration-300 text-base text-white hover:text-teal-400"
               >
                 Team
               </Link>
               <Link
                 href="/news"
-                className={`transition-colors duration-300 text-base ${
-                  isScrolled
-                    ? "text-gray-800 dark:text-gray-200 hover:text-teal-600"
-                    : "text-white hover:text-teal-400"
-                }`}
+                className="transition-colors duration-300 text-base text-white hover:text-teal-400"
               >
                 News
               </Link>

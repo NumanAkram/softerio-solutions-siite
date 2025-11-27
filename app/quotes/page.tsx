@@ -1,12 +1,13 @@
 'use client';
 
 import Contact from '@/components/Contact';
+import ChatWidget from '@/components/ChatWidget';
 
 export default function QuotesPage() {
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-teal-900 dark:from-black dark:via-gray-900 dark:to-teal-900">
+      <section className="relative py-20 sm:py-24 md:py-32 xl:py-20 2xl:py-16 bg-gradient-to-br from-slate-900 via-slate-800 to-teal-900 dark:from-black dark:via-gray-900 dark:to-teal-900">
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight drop-shadow-2xl mb-6">
             Get Your
@@ -25,6 +26,7 @@ export default function QuotesPage() {
 
       {/* Contact Section */}
       <Contact />
+      <ChatWidget />
     </main>
   );
 }

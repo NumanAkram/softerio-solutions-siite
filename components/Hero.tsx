@@ -7,8 +7,8 @@ import { ArrowRight } from "lucide-react";
 import Particles from "react-tsparticles";
 import { Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
-import heroBgImg from "@/public/images/hero-bg.png";
-import heroBgMobileImg from "@/public/images/hero-bg-mobile1.png";
+import heroBgImg from "@/public/images/hero-bg.webp";
+import heroBgMobileImg from "@/public/images/hero-bg-mobile1.webp";
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);

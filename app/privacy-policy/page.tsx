@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import ChatWidget from '@/components/ChatWidget';
 
 const policies = {
   privacy: {
@@ -266,6 +267,7 @@ export default function PrivacyPolicyPage() {
           </div>
         )}
       </div>
+      <ChatWidget />
     </main>
   );
 }

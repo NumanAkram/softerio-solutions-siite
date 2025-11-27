@@ -6,18 +6,19 @@ import { useForm } from "react-hook-form";
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/portfolio/Navbar";
-import SeparatorImg from "@/public/images/separator.png";
+import SeparatorImg from "@/public/images/separator.webp";
 import AtTheRate from "@/public/icons/at-the-rate.svg";
 import Github from "@/public/icons/github.svg";
 import LinkedIn from "@/public/icons/linkedin.svg";
-import Maintenance from "@/public/icons/maintenance.png";
+import Maintenance from "@/public/icons/maintenance.webp";
 import BaselineDoubleArrow from "@/public/icons/ic_baseline-double-arrow.svg";
 import FacebookIcon from "@/public/icons/facebook.svg";
 import LinkedInIcon from "@/public/icons/linkedin-border.svg";
 import InstagramIcon from "@/public/icons/instagram.svg";
 import EmailIcon from "@/public/icons/email.svg";
-import WhatsappIcon from "@/public/icons/whatsapp-black.png";
-import PortfolioPicture from "@/public/images/picture.png";
+import WhatsappIcon from "@/public/icons/whatsapp-black.webp";
+import PortfolioPicture from "@/public/images/picture.webp";
+import ChatWidget from "@/components/ChatWidget";
 
 // Form data interface
 interface FormData {
@@ -29,13 +30,13 @@ interface FormData {
 
 const aboutUs = [
   {
-    icon: "/icons/design.png",
+    icon: "/icons/design.webp",
     title: "D E S I G N",
     description:
       "We create beautiful, user-friendly interfaces that enhance user experience and drive engagement.",
   },
   {
-    icon: "/icons/development.png",
+    icon: "/icons/development.webp",
     title: "D E V E L O P M E N T",
     description:
       "Our expert developers build robust, scalable applications using the latest technologies and best practices.",
@@ -50,10 +51,10 @@ const usingNowSkills = [
   { name: "JAVASCRIPT", icon: "/icons/javascript.svg" },
   { name: "REACT", icon: "/icons/react.svg" },
   { name: "BOOTSTRAP", icon: "/icons/bootstrap.svg" },
-  { name: "GIT", icon: "/icons/git.png" },
+  { name: "GIT", icon: "/icons/git.webp" },
   { name: "FIGMA", icon: "/icons/figma.svg" },
-  { name: "PYTHON", icon: "/icons/python.png" },
-  { name: "REACT NATIVE", icon: "/icons/react-native.png" },
+  { name: "PYTHON", icon: "/icons/python.webp" },
+  { name: "REACT NATIVE", icon: "/icons/react-native.webp" },
 ];
 
 const learningSkills = [
@@ -64,10 +65,10 @@ const learningSkills = [
 ];
 
 const otherSkills = [
-  { name: "ENGLISH", icon: "/icons/angielski.png" },
-  { name: "ANGULAR", icon: "/icons/angular.png" },
-  { name: "ASP.NET", icon: "/icons/asp-dotnet.png" },
-  { name: "C#", icon: "/icons/c-sharp.png" },
+  { name: "ENGLISH", icon: "/icons/angielski.webp" },
+  { name: "ANGULAR", icon: "/icons/angular.webp" },
+  { name: "ASP.NET", icon: "/icons/asp-dotnet.webp" },
+  { name: "C#", icon: "/icons/c-sharp.webp" },
 ];
 
 // Portfolio items data
@@ -86,7 +87,7 @@ const portfolioItems = [
     id: 2,
     title: "Mr Singh's",
     category: "DESIGNED",
-    image: "/images/mr-sing,s.jpg",
+    image: "/images/mr-sing,s.webp",
     link: "https://mrsinghspizza.co.uk/food",
     techStack: "React MySQL Laravel",
     description:
@@ -96,7 +97,7 @@ const portfolioItems = [
     id: 3,
     title: "ZYAPPY Web",
     category: "CODED",
-    image: "/images/zyapy-web.jpg",
+    image: "/images/zyapy-web.webp",
     link: "#",
     techStack: "Vue.js MySQL Laravel",
     description:
@@ -106,7 +107,7 @@ const portfolioItems = [
     id: 4,
     title: "ZYAPPY Mobile-app",
     category: "CODED",
-    image: "/images/zyappy-mobile-app.jpg",
+    image: "/images/zyappy-mobile-app.webp",
     link: "#",
     techStack: "Mobile-app React-Native Nest.js FireBase PostgreSQL",
     description:
@@ -116,7 +117,7 @@ const portfolioItems = [
     id: 5,
     title: "Exactflow",
     category: "CODED",
-    image: "/images/sixn.png",
+    image: "/images/sixn.webp",
     link: "https://www.exactflow.pl/en",
     techStack: "Python Django React.js Node.js",
     description:
@@ -126,7 +127,7 @@ const portfolioItems = [
     id: 7,
     title: "Shawarma Store",
     category: "DESIGNED",
-    image: "/images/shawarma-store.jpg",
+    image: "/images/shawarma-store.webp",
     link: "#",
     techStack: "Mobile-app React-Native Node.js FireBase MySQL",
     description:
@@ -136,7 +137,7 @@ const portfolioItems = [
     id: 8,
     title: "Signin - QEF",
     category: "CODED",
-    image: "/images/5n.png",
+    image: "/images/5n.webp",
     link: "https://qef-fe.vercel.app/",
     techStack: "Python Generative-AI LangChain OpenAI API",
     description:
@@ -146,7 +147,7 @@ const portfolioItems = [
     id: 9,
     title: "Janjapan",
     category: "CODED",
-    image: "/images/threen.png",
+    image: "/images/threen.webp",
     link: "https://janjapan.com/",
     techStack: "PHP Laravel Vue Node",
     description:
@@ -156,7 +157,7 @@ const portfolioItems = [
     id: 10,
     title: "Jantrading",
     category: "CODED",
-    image: "/images/twon.png",
+    image: "/images/twon.webp",
     link: "http://jantradingco.jp/",
     techStack: "Laravel React Vue Node.js PHP",
     description:
@@ -166,7 +167,7 @@ const portfolioItems = [
     id: 11,
     title: "Samsungnac",
     category: "CODED",
-    image: "/images/onen.png",
+    image: "/images/onen.webp",
     link: "http://samsungnac.co.za/",
     techStack: "Python Django React.js Node.js",
     description:
@@ -176,7 +177,7 @@ const portfolioItems = [
     id: 12,
     title: "Global Esales",
     category: "CODED",
-    image: "/images/global-united-esales.png",
+    image: "/images/global-united-esales.webp",
     link: "https://guesb2b.com/auth/sign-in",
     techStack:
       "React.js Next.js Tailwind-CSS TypeScript Node.js Express.js MongoDB Redis",
@@ -187,7 +188,7 @@ const portfolioItems = [
     id: 13,
     title: "Janslawfirm",
     category: "CODED",
-    image: "/images/46.png",
+    image: "/images/46.webp",
     link: "https://janslawfirm.co.uk/",
     techStack: "HTML5 CSS3 JavaScript .net C#",
     description:
@@ -197,7 +198,7 @@ const portfolioItems = [
     id: 14,
     title: "Nowfluence",
     category: "CODED",
-    image: "/images/44.png",
+    image: "/images/44.webp",
     link: "https://app.nowfluence.co/",
     techStack: "React TypeScript Tailwind-CSS Node.js Express.js",
     description:
@@ -207,7 +208,7 @@ const portfolioItems = [
     id: 15,
     title: "Getcontractorplus",
     category: "CODED",
-    image: "/images/45.png",
+    image: "/images/45.webp",
     link: "https://app.dev.getcontractorplus.com/auth/login",
     techStack: "React TypeScript Tailwind-CSS Next.js",
     description:
@@ -217,7 +218,7 @@ const portfolioItems = [
     id: 16,
     title: "Zoho",
     category: "CODED",
-    image: "/images/47.png",
+    image: "/images/47.webp",
     link: "https://www.zoho.com/",
     techStack:
       "HTML5 CSS3 JavaScript React Java Node.js Cloud-Infrastructure-(AWS/Azure)",
@@ -228,7 +229,7 @@ const portfolioItems = [
     id: 17,
     title: "Onlinelegaladvise",
     category: "CODED",
-    image: "/images/445.png",
+    image: "/images/445.webp",
     link: "https://onlinelegaladvise.com/",
     techStack: "HTML5 CSS3 JavaScript jQuery PHP MySQL",
     description:
@@ -238,7 +239,7 @@ const portfolioItems = [
     id: 18,
     title: "Servrhotels",
     category: "CODED",
-    image: "/images/446.png",
+    image: "/images/446.webp",
     link: "https://servrhotels.com/",
     techStack: "HTML5 CSS3 JavaScript React Node.js Express.js",
     description:
@@ -248,7 +249,7 @@ const portfolioItems = [
     id: 19,
     title: "Jan Japan Invoice",
     category: "CODED",
-    image: "/images/project-1.PNG",
+    image: "/images/project-1.webp",
     link: "http://imgup.jan-japan.com/jans_invoice/",
     techStack: "Express.js React.js Node.js",
     description:
@@ -258,7 +259,7 @@ const portfolioItems = [
     id: 20,
     title: "Barney's",
     category: "CODED",
-    image: "/images/project-2.PNG",
+    image: "/images/project-2.webp",
     link: "#",
     techStack: "Linux Apache MySQL PHP",
     description:
@@ -279,7 +280,7 @@ const portfolioItems = [
     id: 22,
     title: "Ormith",
     category: "CODED",
-    image: "/images/ormith.jpg",
+    image: "/images/ormith.webp",
     link: "https://ormith.com/",
     techStack: "WordPress Elementor Contact-Form-7 WooCommerce-WP Mail-SMTP",
     description:
@@ -289,7 +290,7 @@ const portfolioItems = [
     id: 23,
     title: "Saksfifthavenue",
     category: "CODED",
-    image: "/images/4n.png",
+    image: "/images/4n.webp",
     link: "https://www.saksfifthavenue.com/",
     techStack:
       "React.js Next.js Tailwind CSS TypeScript Node.js Express.js MongoDB",
@@ -346,13 +347,105 @@ export default function PortfolioPage() {
         <Navbar />
         {/* Diagonal Split */}
         <div className="flex flex-col md:flex-row h-auto md:h-screen w-full max-w-[1920px]">
-          {/* Left Side - Content */}
+          
+          {/* MOBILE VIEW ONLY - Full Screen Image with Diagonal Overlay (Like Tomasz Gajda) */}
+          <div className="md:hidden relative w-full bg-black overflow-hidden" style={{ height: '150vh' }}>
+            {/* Person's Full Screen Image */}
+            <div className="absolute w-full" style={{ height: '150%', top: '60px' }}>
+              <Image
+                src={PortfolioPicture}
+                alt="Numan Akram"
+                fill
+                className="object-cover"
+                priority
+                style={{
+                  objectPosition: 'center 15%'
+                }}
+              />
+            </div>
+
+            {/* Diagonal Overlay at Bottom */}
+            <div 
+              className="absolute bottom-0 left-0 w-full h-[35%] bg-[#2D2D2D]"
+              style={{
+                clipPath: 'polygon(0 22%, 100% 0, 100% 100%, 0 100%)'
+              }}
+            >
+              <div className="absolute inset-0 px-6 flex items-end justify-between pb-8">
+                {/* Text Content - Left Side */}
+                <div className="flex flex-col justify-end">
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                    className="text-sm text-white/90 mb-1"
+                  >
+                    Hi, I am
+                  </motion.p>
+
+                  <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="text-2xl text-white font-bold mb-1"
+                  >
+                    Numan Akram
+                  </motion.h1>
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7, duration: 0.8 }}
+                    className="text-sm text-white/80"
+                  >
+                    CEO of Softerio Solutions
+                  </motion.p>
+                </div>
+
+                {/* Social Icons - Right Side Vertical Stack */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.9, duration: 0.8 }}
+                  className="flex flex-col space-y-3"
+                >
+                  <Link
+                    href="mailto:mnumanakrambhatti@gmail.com"
+                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-white/90 transition-all duration-300 hover:scale-110"
+                  >
+                    <Image src={AtTheRate} alt="Email" className="w-5 h-5 filter brightness-0" />
+                  </Link>
+                  <Link
+                    href="https://github.com/muhammadnuman-eng"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-white/90 transition-all duration-300 hover:scale-110"
+                  >
+                    <Image src={Github} alt="GitHub" className="w-5 h-5" />
+                  </Link>
+                  <Link
+                    href="https://www.linkedin.com/in/numan-akram-founder/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-white/90 transition-all duration-300 hover:scale-110"
+                  >
+                    <Image
+                      src={LinkedIn}
+                      alt="LinkedIn"
+                      className="w-4 h-4"
+                    />
+                  </Link>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+
+          {/* DESKTOP/TABLET VIEW - Original Layout */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            //2xl:pl-[13.2rem] xl:pl-[6rem] pl-[5rem]
-            className="w-full md:w-1/2 pt-24 md:pt-40 px-6 sm:px-8 md:px-12 lg:px-20 xl:pl-[13.2rem] flex flex-col justify-center"
+            className="hidden md:flex w-full md:w-1/2 pt-24 md:pt-[20rem] lg:pt-[20rem] px-6 sm:px-8 md:px-12 lg:px-20 xl:pl-[13.2rem] flex-col justify-center"
           >
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -435,12 +528,12 @@ export default function PortfolioPage() {
             </motion.div>
           </motion.div>
 
-          {/* Right Side - Photo */}
+          {/* Right Side - Photo (DESKTOP/TABLET ONLY) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full md:w-[77%] bg-black relative overflow-hidden min-h-[400px] md:min-h-0"
+            className="hidden md:block w-full md:w-[77%] bg-black relative overflow-hidden min-h-[400px] md:min-h-0"
             style={{
               clipPath: typeof window !== 'undefined' && window.innerWidth >= 768 ? "polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)" : "none",
             }}
@@ -451,15 +544,15 @@ export default function PortfolioPage() {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="w-full h-full flex items-end justify-center md:justify-end px-8 sm:px-12 md:px-16 lg:px-20 xl:px-24 pb-0"
             >
-              <div className="relative w-full max-w-[20rem] sm:max-w-[24rem] md:max-w-[28rem] lg:max-w-[32rem] xl:max-w-[35rem]">
+              <div className="relative w-full max-w-[20rem] sm:max-w-[24rem] md:max-w-[26rem] lg:max-w-[28rem] xl:max-w-[30rem]">
                 <Image
                   src={PortfolioPicture}
                   alt="picture"
                   width={500}
                   height={650}
-                  className="w-full h-auto object-cover object-top"
+                  className="w-full h-auto object-cover"
                   style={{
-                    maxHeight: '85vh',
+                    maxHeight: '90vh',
                     objectPosition: 'center top'
                   }}
                 />
@@ -585,7 +678,7 @@ export default function PortfolioPage() {
             </motion.div>
 
             {/* Service Cards - 2 per row with reduced height and increased width */}
-            <div className="flex gap-8">
+            <div className="block md:flex gap-8">
               {aboutUs.map((service, index) => (
                 <motion.div
                   key={service.title}
@@ -593,7 +686,7 @@ export default function PortfolioPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 * index, duration: 0.8 }}
                   viewport={{ once: true }}
-                  className="group cursor-pointer"
+                  className="group cursor-pointer mb-8 md:mb-0"
                 >
                   <div className="text-left rounded-lg transition-all duration-300 hover:-translate-y-2 ">
                     <div className="flex items-center">
@@ -670,7 +763,7 @@ export default function PortfolioPage() {
 
         {/* Skills Section */}
         <div className="w-full flex justify-center">
-          <section id="skills" className="py-12 sm:py-16 md:py-20 lg:py-24 w-full max-w-[1920px]">
+          <section id="skills" className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-16 2xl:py-12 w-full max-w-[1920px]">
           <div className="max-w-[47rem] mx-auto px-4 sm:px-6 md:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -696,7 +789,7 @@ export default function PortfolioPage() {
               <h3 className="text-lg sm:text-xl md:text-2xl px-3 font-bold text-black mb-8 sm:mb-12 md:mb-[4.5rem] text-left tracking-[0.1em] sm:tracking-[0.2em]">
                 USING NOW:
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 sm:gap-x-12 md:gap-x-24 gap-y-8 sm:gap-y-10 md:gap-y-14 place-content-between">
+              <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-x-8 sm:gap-x-12 md:gap-x-24 gap-y-8 sm:gap-y-10 md:gap-y-14 place-content-between">
                 {usingNowSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -732,7 +825,7 @@ export default function PortfolioPage() {
               <h3 className="text-lg sm:text-xl md:text-2xl px-3 font-bold text-black mb-8 sm:mb-12 md:mb-[4.5rem] text-left tracking-[0.1em] sm:tracking-[0.2em]">
                 LEARNING:
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 sm:gap-x-12 md:gap-x-24 gap-y-8 sm:gap-y-10 md:gap-y-14">
+              <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-x-8 sm:gap-x-12 md:gap-x-24 gap-y-8 sm:gap-y-10 md:gap-y-14">
                 {learningSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -767,7 +860,7 @@ export default function PortfolioPage() {
               <h3 className="text-lg sm:text-xl md:text-2xl px-3 font-bold text-black mb-8 sm:mb-12 md:mb-[4.5rem] text-left tracking-[0.1em] sm:tracking-[0.2em]">
                 OTHER SKILLS:
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 sm:gap-x-12 md:gap-x-24 gap-y-6 sm:gap-y-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-x-8 sm:gap-x-12 md:gap-x-24 gap-y-6 sm:gap-y-8">
                 {otherSkills.map((skill, index) => (
                   <motion.div
                     key={skill.name}
@@ -805,7 +898,7 @@ export default function PortfolioPage() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="h-48 sm:h-56 md:h-64 bg-cover bg-center bg-[url(/images/portfolio-bg.png)]"
+          className="h-48 sm:h-56 md:h-64 bg-cover bg-center bg-[url(/images/portfolio-bg.webp)]"
         >
           <div className="flex items-center justify-center h-full">
             <motion.div
@@ -885,7 +978,7 @@ export default function PortfolioPage() {
                       height={300}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src = "/images/projects/4.png";
+                        target.src = "/images/projects/4.webp";
                       }}
                     />
                   </Link>
@@ -1046,7 +1139,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Footer Section */}
-      <footer className="bg-[#1A1A1A] text-white py-8 sm:py-10 md:py-12 w-full overflow-hidden flex justify-center">
+      <footer className="bg-[#1A1A1A] text-white py-8 sm:py-10 md:py-12 xl:py-8 2xl:py-6 w-full overflow-hidden flex justify-center">
         <div className="w-full max-w-[1920px]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center w-full">
           {/* Back to Top */}
@@ -1154,6 +1247,7 @@ export default function PortfolioPage() {
         </div>
         </div>
       </footer>
+      <ChatWidget />
     </div>
   );
 }

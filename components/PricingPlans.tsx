@@ -50,65 +50,65 @@ const plans = [
 
 export default function PricingPlans() {
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 w-full overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 w-full overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 max-w-full">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-10 2xl:mb-8 px-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
             Pricing Plans
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Choose the plan that suits your needs and start your journey with
             us.
           </p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12 max-w-md lg:max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6 md:py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 max-w-sm sm:max-w-md lg:max-w-6xl mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 my-4 sm:my-6 ${
+              className={`relative bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 my-4 sm:my-6 w-full max-w-full ${
                 plan.popular
-                  ? "border-4 border-teal-500 lg:scale-105"
+                  ? "border-2 sm:border-4 border-teal-500 lg:scale-105"
                   : "border border-gray-200 dark:border-gray-700"
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-teal-500 text-white px-6 py-2 rounded-full text-sm font-medium">
+                <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <span className="bg-teal-500 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap shadow-lg">
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              <div className="text-center mb-6 sm:mb-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
                   {plan.name}
                 </h3>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-blue-600">
+                <div className="mb-4 sm:mb-6">
+                  <span className="text-3xl sm:text-4xl font-bold text-blue-600">
                     ${plan.price}
                   </span>
-                  <span className="text-gray-600 dark:text-gray-400 ml-2">
+                  <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400 ml-1 sm:ml-2">
                     {plan.period}
                   </span>
                 </div>
               </div>
 
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                 {plan.features.map((feature, featureIndex) => (
                   <div
                     key={featureIndex}
-                    className="flex items-center space-x-3"
+                    className="flex items-center space-x-2 sm:space-x-3"
                   >
                     {feature.included ? (
-                      <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
+                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0" />
                     ) : (
-                      <X className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                      <X className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 flex-shrink-0" />
                     )}
                     <span
-                      className={`${
+                      className={`text-sm sm:text-base ${
                         feature.included
                           ? "text-gray-900 dark:text-white"
                           : "text-gray-400 dark:text-gray-500"
@@ -120,7 +120,7 @@ export default function PricingPlans() {
                 ))}
               </div>
               <Link href="#getInTouch">
-                <button className="w-full bg-teal-500 hover:bg-teal-600 text-white py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 uppercase tracking-wide">
+                <button className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 sm:py-4 rounded-full text-sm sm:text-base font-medium transition-all duration-300 hover:scale-105 uppercase tracking-wide">
                   Order Now
                 </button>
               </Link>

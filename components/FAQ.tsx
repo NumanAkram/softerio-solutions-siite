@@ -30,10 +30,10 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
+    <section className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-white dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-10 2xl:mb-8">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Frequently Asked Questions
           </h2>

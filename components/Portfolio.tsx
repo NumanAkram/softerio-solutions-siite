@@ -27,7 +27,7 @@ const homePageItems = [
     id: 2,
     title: "Mr Singh's",
     category: "web development",
-    image: "/images/mr-sing,s.jpg",
+    image: "/images/mr-sing,s.webp",
     client: "BigSystema Inc",
     languages: "vue.js, nuxt 3, typescript, laravel",
     duration: "6 months",
@@ -41,7 +41,7 @@ const homePageItems = [
     id: 3,
     title: "ZYAPPY Web",
     category: "web development",
-    image: "/images/zyapy-web.jpg",
+    image: "/images/zyapy-web.webp",
     client: "FormBrick Ltd",
     languages: "next.js, typescript, prisma, tailwind",
     duration: "7 months",
@@ -56,7 +56,7 @@ const homePageItems = [
     id: 4,
     title: "ZYAPPY Mobile-app",
     category: "mobile application",
-    image: "/images/zyappy-mobile-app.jpg",
+    image: "/images/zyappy-mobile-app.webp",
     client: "BehindWords Corp",
     languages: "react, node.js, typescript, postgresql",
     duration: "6 months",
@@ -70,7 +70,7 @@ const homePageItems = [
     id: 5,
     title: "Exactflow",
     category: "web development",
-    image: "/images/sixn.png",
+    image: "/images/sixn.webp",
     client: "HackerNews Inc",
     languages: "nuxt.js, vue.js, typescript",
     duration: "4 months",
@@ -84,7 +84,7 @@ const homePageItems = [
     id: 6,
     title: "Shawarma Store",
     category: "mobile application",
-    image: "/images/shawarma-store.jpg",
+    image: "/images/shawarma-store.webp",
     client: "Nuxt Corp",
     languages: "nuxt.js, vue.js, typescript, unoCSS",
     duration: "6 months",
@@ -98,7 +98,7 @@ const homePageItems = [
     id: 7,
     title: "Signin - QEF",
     category: "web development",
-    image: "/images/5n.png",
+    image: "/images/5n.webp",
     link: "https://qef-fe.vercel.app/",
     techStack: "Python Generative-AI LangChain OpenAI API",
     description:
@@ -112,7 +112,7 @@ const homePageItems = [
     id: 9,
     title: "Janjapan",
     category: "web development",
-    image: "/images/threen.png",
+    image: "/images/threen.webp",
     link: "https://janjapan.com/",
     techStack: "PHP Laravel Vue Node",
     description:
@@ -126,7 +126,7 @@ const homePageItems = [
     id: 10,
     title: "Jantrading",
     category: "web development",
-    image: "/images/twon.png",
+    image: "/images/twon.webp",
     link: "http://jantradingco.jp/",
     techStack: "Laravel React Vue Node.js PHP",
     description:
@@ -140,7 +140,7 @@ const homePageItems = [
     id: 11,
     title: "Samsungnac",
     category: "web development",
-    image: "/images/onen.png",
+    image: "/images/onen.webp",
     link: "http://samsungnac.co.za/",
     techStack: "Python Django React.js Node.js",
     description:
@@ -154,7 +154,7 @@ const homePageItems = [
     id: 12,
     title: "Global Esales",
     category: "web development",
-    image: "/images/global-united-esales.png",
+    image: "/images/global-united-esales.webp",
     link: "https://guesb2b.com/auth/sign-in",
     techStack:
       "React.js Next.js Tailwind-CSS TypeScript Node.js Express.js MongoDB Redis",
@@ -170,7 +170,7 @@ const homePageItems = [
     id: 13,
     title: "Janslawfirm",
     category: "website design",
-    image: "/images/46.png",
+    image: "/images/46.webp",
     link: "https://janslawfirm.co.uk/",
     techStack: "HTML5 CSS3 JavaScript .net C#",
     description:
@@ -184,7 +184,7 @@ const homePageItems = [
     id: 14,
     title: "Nowfluence",
     category: "web development",
-    image: "/images/44.png",
+    image: "/images/44.webp",
     link: "https://app.nowfluence.co/",
     techStack: "React TypeScript Tailwind-CSS Node.js Express.js",
     description:
@@ -198,7 +198,7 @@ const homePageItems = [
     id: 15,
     title: "Getcontractorplus",
     category: "web development",
-    image: "/images/45.png",
+    image: "/images/45.webp",
     link: "https://app.dev.getcontractorplus.com/auth/login",
     techStack: "React TypeScript Tailwind-CSS Next.js",
     description:
@@ -212,7 +212,7 @@ const homePageItems = [
     id: 16,
     title: "Zoho",
     category: "web development",
-    image: "/images/47.png",
+    image: "/images/47.webp",
     link: "https://www.zoho.com/",
     techStack:
       "HTML5 CSS3 JavaScript React Java Node.js Cloud-Infrastructure-(AWS/Azure)",
@@ -227,7 +227,7 @@ const homePageItems = [
     id: 17,
     title: "Onlinelegaladvise",
     category: "website design",
-    image: "/images/445.png",
+    image: "/images/445.webp",
     link: "https://onlinelegaladvise.com/",
     techStack: "HTML5 CSS3 JavaScript jQuery PHP MySQL",
     description:
@@ -241,7 +241,7 @@ const homePageItems = [
     id: 18,
     title: "Servrhotels",
     category: "website design",
-    image: "/images/446.png",
+    image: "/images/446.webp",
     link: "https://servrhotels.com/",
     techStack: "HTML5 CSS3 JavaScript React Node.js Express.js",
     description:
@@ -255,7 +255,7 @@ const homePageItems = [
     id: 19,
     title: "Jan Japan Invoice",
     category: "web development",
-    image: "/images/project-1.PNG",
+    image: "/images/project-1.webp",
     link: "http://imgup.jan-japan.com/jans_invoice/",
     techStack: "Express.js React.js Node.js",
     description:
@@ -269,7 +269,7 @@ const homePageItems = [
     id: 20,
     title: "Barney's",
     category: "web development",
-    image: "/images/project-2.PNG",
+    image: "/images/project-2.webp",
     link: "#",
     techStack: "Linux Apache MySQL PHP",
     description:
@@ -298,7 +298,7 @@ const homePageItems = [
     id: 22,
     title: "Ormith",
     category: "website design",
-    image: "/images/ormith.jpg",
+    image: "/images/ormith.webp",
     link: "https://ormith.com/",
     techStack: "WordPress Elementor Contact-Form-7 WooCommerce-WP Mail-SMTP",
     description:
@@ -312,7 +312,7 @@ const homePageItems = [
     id: 23,
     title: "Saksfifthavenue",
     category: "web development",
-    image: "/images/4n.png",
+    image: "/images/4n.webp",
     link: "https://www.saksfifthavenue.com/",
     techStack:
       "React.js Next.js Tailwind CSS TypeScript Node.js Express.js MongoDB",
@@ -396,11 +396,11 @@ export default function Portfolio() {
   };
 
   return (
-    <section className="py-20 bg-gray-100 dark:bg-gray-900 transition-all duration-500 w-full overflow-hidden flex justify-center">
+    <section className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-gray-100 dark:bg-gray-900 transition-all duration-500 w-full overflow-hidden flex justify-center">
       <div className="w-full max-w-[1920px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div
-          className={`text-left md:text-center mb-16 transition-all duration-1000 ${
+          className={`text-left md:text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-10 2xl:mb-8 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
@@ -463,7 +463,7 @@ export default function Portfolio() {
                       onError={(e) => {
                         // Fallback to a default image if the original fails to load
                         const target = e.target as HTMLImageElement;
-                        target.src = "/images/tech-pattern.jpg";
+                        target.src = "/images/tech-pattern.webp";
                       }}
                     />
 
@@ -584,7 +584,7 @@ export default function Portfolio() {
                   className="object-cover"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = "/images/tech-pattern.jpg";
+                    target.src = "/images/tech-pattern.webp";
                   }}
                 />
               </div>

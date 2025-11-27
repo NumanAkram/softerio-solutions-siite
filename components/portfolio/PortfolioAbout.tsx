@@ -20,7 +20,7 @@ export default function PortfolioAbout() {
             <div className="w-full lg:w-5/12">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <Image
-                  src="/images/projects/profile.png"
+                  src="/images/projects/profile.webp"
                   alt="Numan - Full Stack Developer"
                   width={450}
                   height={550}

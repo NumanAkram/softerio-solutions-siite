@@ -10,8 +10,8 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
-import heroBgImg from "@/public/images/hero-bg.png";
-import heroBgMobileImg from "@/public/images/hero-bg-mobile1.png";
+import heroBgImg from "@/public/images/hero-bg.webp";
+import heroBgMobileImg from "@/public/images/hero-bg-mobile1.webp";
   
 export default function Footer() {
   return (
@@ -34,17 +34,20 @@ export default function Footer() {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-16 xl:py-10 2xl:py-8 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center space-x-2">
               <Image
-                src="/images/logo-removebg-preview.png"
+                src="/images/logo-removebg-preview.webp"
                 alt="Company Logo"
                 width={200}
                 height={80}
-                className="h-20 w-auto object-contain brightness-0 invert"
+                className="h-20 w-auto object-contain"
+                style={{
+                  filter: 'brightness(0) saturate(100%) invert(56%) sepia(97%) saturate(1184%) hue-rotate(141deg) brightness(95%) contrast(101%)'
+                }}
               />
             </Link>
             <p className="text-gray-400 leading-relaxed">

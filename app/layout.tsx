@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Softerio Solutions",
   icons: {
-    icon: "/icons/logo.png",
+    icon: "/icons/logo.webp",
   },
 };
 
@@ -26,7 +26,7 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
-        <link rel="icon" href="/icons/logo.png" type="image/png" />
+        <link rel="icon" href="/icons/logo.webp" type="image/png" />
       </head>
       <body className={`${inter.className} overflow-x-hidden max-w-full`}>
         <ThemeProvider

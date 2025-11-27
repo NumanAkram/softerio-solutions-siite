@@ -18,7 +18,7 @@ const blogPosts: BlogPost[] = [
     id: 1,
     title: "The Future of Web Design: Trends to Watch in 2024",
     excerpt: "Explore the latest web design trends that will dominate the digital landscape in 2024, from AI-powered interfaces to sustainable design practices.",
-    image: "/images/tech-pattern.jpg",
+    image: "/images/tech-pattern.webp",
     date: "January 15, 2024",
     category: "Web Design",
     author: "Daniel Martin"
@@ -27,7 +27,7 @@ const blogPosts: BlogPost[] = [
     id: 2,
     title: "Building Responsive Websites: Best Practices",
     excerpt: "Learn the essential techniques and best practices for creating truly responsive websites that work seamlessly across all devices and screen sizes.",
-    image: "/images/tech-pattern2.png",
+    image: "/images/tech-pattern2.webp",
     date: "January 10, 2024",
     category: "Development",
     author: "Daniel Martin"
@@ -36,7 +36,7 @@ const blogPosts: BlogPost[] = [
     id: 3,
     title: "UI/UX Design Principles for Better User Experience",
     excerpt: "Discover the fundamental principles of UI/UX design that can significantly improve user engagement and satisfaction on your digital products.",
-    image: "/images/hero-bg.png",
+    image: "/images/hero-bg.webp",
     date: "January 5, 2024",
     category: "UI/UX",
     author: "Daniel Martin"

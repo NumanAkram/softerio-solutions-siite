@@ -94,11 +94,11 @@ export default function Services() {
   };
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300 w-full">
+    <section className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-gray-50 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300 w-full">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 w-full">
         <Image
-          src="/images/tech-pattern.jpg"
+          src="/images/tech-pattern.webp"
           alt="Tech Pattern Background"
           fill
           className="object-cover opacity-10 dark:opacity-5"
@@ -114,7 +114,7 @@ export default function Services() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-full overflow-hidden">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-10 2xl:mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
             Services We Offer
           </h2>

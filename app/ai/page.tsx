@@ -22,6 +22,7 @@ import {
   Settings,
   Rocket,
 } from "lucide-react";
+import ChatWidget from "@/components/ChatWidget";
 
 export default function AIPage() {
   const [mounted, setMounted] = useState(false);
@@ -165,7 +166,7 @@ export default function AIPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden max-w-full">
       {/* Hero Section */}
       <section
         id="ai-hero"
@@ -235,122 +236,258 @@ export default function AIPage() {
         <div className="absolute -top-8 -right-8 w-40 h-40 rounded-full blur-3xl bg-blue-500/10"></div>
         <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full blur-3xl bg-indigo-500/10"></div>
 
-        <div className="container mx-auto px-6 pt-24 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
-            {/* Left Content */}
-            <div className="order-2 lg:order-1 space-y-6 md:pr-8 lg:pr-14 max-w-2xl pt-20 ml-16">
-              <h1 className="text-[30px] sm:text-[38px] md:text-[40px] lg:text-[45px] font-semibold leading-tight animate-fade-in-up [animation-delay:100ms]">
-                <span className="text-white">Artificial </span>
-                <span className="text-teal-400">Intelligence</span>
+        <div className="container mx-auto px-4 sm:px-6 pt-20 sm:pt-24 pb-8 relative z-10">
+          <div className="relative min-h-screen flex items-center justify-center max-w-full overflow-hidden">
+            
+            {/* Background - AI Visualization (Behind) - Only on Mobile/Tablet */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-70 md:opacity-80 lg:hidden pointer-events-none z-0">
+              <div className="relative w-[280px] h-[280px] xs:w-[320px] xs:h-[320px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] xl:w-[700px] xl:h-[700px] bg-slate-800/60 rounded-full shadow-2xl shadow-teal-500/30 backdrop-blur-md">
+                {/* Central AI Core */}
+                <motion.div
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 360],
+                  }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="absolute inset-0 flex items-center justify-center"
+                >
+                  <div className="w-32 h-32 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 bg-gradient-to-br from-teal-400 via-teal-500 to-blue-600 rounded-full flex items-center justify-center shadow-2xl shadow-teal-500/70 ring-4 ring-teal-400/30">
+                    <Brain className="w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 text-white drop-shadow-lg" />
+                  </div>
+                </motion.div>
+
+                {/* Orbiting Elements */}
+                {[0, 60, 120, 180, 240, 300].map((angle, index) => (
+                  <motion.div
+                    key={index}
+                    animate={{
+                      rotate: [0, 360],
+                    }}
+                    transition={{
+                      duration: 15 + index * 2,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="absolute inset-0"
+                    style={{
+                      transformOrigin: "center",
+                    }}
+                  >
+                    <div
+                      className="absolute w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 bg-gradient-to-r from-teal-400 to-blue-500 rounded-full shadow-2xl shadow-teal-400/80 ring-2 ring-teal-400/50"
+                      style={{
+                        top: "50%",
+                        left: "50%",
+                        transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-120px)`,
+                      }}
+                    />
+                  </motion.div>
+                ))}
+
+                {/* Connection Lines */}
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                  <motion.circle
+                    cx="50"
+                    cy="50"
+                    r="35"
+                    stroke="url(#gradient)"
+                    strokeWidth="1"
+                    fill="none"
+                    strokeDasharray="3,3"
+                    animate={{
+                      strokeDashoffset: [0, 6],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+                  <defs>
+                    <linearGradient
+                      id="gradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop
+                        offset="0%"
+                        stopColor="#14b8a6"
+                        stopOpacity="0.9"
+                      />
+                      <stop
+                        offset="100%"
+                        stopColor="#3b82f6"
+                        stopOpacity="0.9"
+                      />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+
+            {/* Foreground - Text Content (On Top - Mobile/Tablet) */}
+            <div className="relative z-20 w-full max-w-4xl mx-auto px-4 sm:px-6 text-center md:text-left space-y-6 sm:space-y-8 lg:hidden">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold leading-tight animate-fade-in-up [animation-delay:100ms] text-shadow-lg">
+                <span className="text-white drop-shadow-2xl">Artificial </span>
+                <span className="text-teal-400 drop-shadow-2xl">Intelligence</span>
               </h1>
-              <p className="text-lg text-white animate-fade-in-up [animation-delay:300ms]">
+              <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-white leading-relaxed animate-fade-in-up [animation-delay:300ms] max-w-3xl mx-auto md:mx-0 drop-shadow-lg">
                 Transform your business with cutting-edge AI solutions. From
                 machine learning to automation, we deliver intelligent systems
                 that drive growth and innovation.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up [animation-delay:500ms]">
-                <button className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teal-500/25 flex items-center gap-2">
-                  Explore AI Solutions
-                  <ArrowRight className="w-5 h-5" />
+              <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 sm:gap-5 animate-fade-in-up [animation-delay:500ms] justify-center md:justify-start items-center md:items-start w-full max-w-2xl mx-auto md:mx-0">
+                <button 
+                  className="bg-teal-500 hover:bg-teal-600 text-white px-6 xs:px-8 sm:px-10 py-3 xs:py-4 sm:py-5 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/50 flex items-center justify-center gap-2 sm:gap-3 text-sm xs:text-base sm:text-lg whitespace-nowrap shadow-xl"
+                >
+                  <span className="flex items-center justify-center gap-2 sm:gap-3">
+                    Explore AI Solutions
+                    <ArrowRight className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                  </span>
                 </button>
-                <button className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2">
-                  <Play className="w-5 h-5" />
-                  Watch Demo
+                <button 
+                  onClick={() => (window.location.href = "/video")}
+                  className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-6 xs:px-8 sm:px-10 py-3 xs:py-4 sm:py-5 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2 sm:gap-3 text-sm xs:text-base sm:text-lg whitespace-nowrap shadow-xl cursor-pointer"
+                >
+                  <span className="flex items-center justify-center gap-2 sm:gap-3">
+                    <Play className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                    Watch Demo
+                  </span>
                 </button>
               </div>
             </div>
 
-            {/* Right Content - AI Visualization */}
-            <div className="order-1 lg:order-2 relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-transform hover:scale-[1.02] duration-500">
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/20 to-transparent"></div>
-                <div className="relative w-96 h-96 mx-auto">
-                  {/* Central AI Core */}
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.1, 1],
-                      rotate: [0, 360],
-                    }}
-                    transition={{
-                      duration: 20,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    className="absolute inset-0 flex items-center justify-center"
+            {/* Desktop Layout (Side by Side) - Only on Desktop */}
+            <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center w-full relative z-20">
+              {/* Left: Text Content */}
+              <div className="space-y-6 pr-14 max-w-2xl text-left flex flex-col items-start">
+                <h1 className="text-4xl xl:text-[45px] font-bold leading-tight animate-fade-in-up [animation-delay:100ms]">
+                  <span className="text-white">Artificial </span>
+                  <span className="text-teal-400">Intelligence</span>
+                </h1>
+                <p className="text-lg text-white leading-relaxed animate-fade-in-up [animation-delay:300ms]">
+                  Transform your business with cutting-edge AI solutions. From
+                  machine learning to automation, we deliver intelligent systems
+                  that drive growth and innovation.
+                </p>
+                <div className="flex flex-row gap-4 animate-fade-in-up [animation-delay:500ms] justify-start items-start">
+                  <button 
+                    className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teal-500/25 flex items-center justify-center gap-2 text-base whitespace-nowrap"
                   >
-                    <div className="w-32 h-32 bg-gradient-to-br from-teal-400 to-blue-600 rounded-full flex items-center justify-center shadow-2xl shadow-teal-500/50">
-                      <Brain className="w-16 h-16 text-white" />
-                    </div>
-                  </motion.div>
+                    <span className="flex items-center justify-center gap-2">
+                      Explore AI Solutions
+                      <ArrowRight className="w-5 h-5 flex-shrink-0" />
+                    </span>
+                  </button>
+                  <button 
+                    onClick={() => (window.location.href = "/video")}
+                    className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2 text-base whitespace-nowrap cursor-pointer"
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <Play className="w-5 h-5 flex-shrink-0" />
+                      Watch Demo
+                    </span>
+                  </button>
+                </div>
+              </div>
 
-                  {/* Orbiting Elements */}
-                  {[0, 60, 120, 180, 240, 300].map((angle, index) => (
+              {/* Right: AI Visualization Card */}
+              <div className="relative w-full flex items-center justify-end">
+                <div className="relative rounded-full bg-slate-800/30 backdrop-blur-sm p-6">
+                  <div className="relative w-[360px] h-[360px] xl:w-[384px] xl:h-[384px]">
+                    {/* Central AI Core */}
                     <motion.div
-                      key={index}
                       animate={{
+                        scale: [1, 1.1, 1],
                         rotate: [0, 360],
                       }}
                       transition={{
-                        duration: 15 + index * 2,
+                        duration: 20,
                         repeat: Infinity,
                         ease: "linear",
                       }}
-                      className="absolute inset-0"
-                      style={{
-                        transformOrigin: "center",
-                      }}
+                      className="absolute inset-0 flex items-center justify-center"
                     >
-                      <div
-                        className="absolute w-4 h-4 bg-gradient-to-r from-teal-400 to-blue-500 rounded-full shadow-lg"
+                      <div className="w-32 h-32 bg-gradient-to-br from-teal-400 to-blue-600 rounded-full flex items-center justify-center shadow-2xl shadow-teal-500/50">
+                        <Brain className="w-16 h-16 text-white" />
+                      </div>
+                    </motion.div>
+
+                    {/* Orbiting Elements */}
+                    {[0, 60, 120, 180, 240, 300].map((angle, index) => (
+                      <motion.div
+                        key={index}
+                        animate={{
+                          rotate: [0, 360],
+                        }}
+                        transition={{
+                          duration: 15 + index * 2,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                        className="absolute inset-0"
                         style={{
-                          top: "50%",
-                          left: "50%",
-                          transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-120px)`,
+                          transformOrigin: "center",
+                        }}
+                      >
+                        <div
+                          className="absolute w-4 h-4 bg-gradient-to-r from-teal-400 to-blue-500 rounded-full shadow-lg"
+                          style={{
+                            top: "50%",
+                            left: "50%",
+                            transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-120px)`,
+                          }}
+                        />
+                      </motion.div>
+                    ))}
+
+                    {/* Connection Lines */}
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                      <motion.circle
+                        cx="50"
+                        cy="50"
+                        r="35"
+                        stroke="url(#gradient-desktop)"
+                        strokeWidth="0.5"
+                        fill="none"
+                        strokeDasharray="2,2"
+                        animate={{
+                          strokeDashoffset: [0, 4],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "linear",
                         }}
                       />
-                    </motion.div>
-                  ))}
-
-                  {/* Connection Lines */}
-                  <svg className="absolute inset-0 w-full h-full">
-                    <motion.circle
-                      cx="192"
-                      cy="192"
-                      r="120"
-                      stroke="url(#gradient)"
-                      strokeWidth="2"
-                      fill="none"
-                      strokeDasharray="5,5"
-                      animate={{
-                        strokeDashoffset: [0, 20],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                    />
-                    <defs>
-                      <linearGradient
-                        id="gradient"
-                        x1="0%"
-                        y1="0%"
-                        x2="100%"
-                        y2="100%"
-                      >
-                        <stop
-                          offset="0%"
-                          stopColor="#14b8a6"
-                          stopOpacity="0.6"
-                        />
-                        <stop
-                          offset="100%"
-                          stopColor="#3b82f6"
-                          stopOpacity="0.6"
-                        />
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                      <defs>
+                        <linearGradient
+                          id="gradient-desktop"
+                          x1="0%"
+                          y1="0%"
+                          x2="100%"
+                          y2="100%"
+                        >
+                          <stop
+                            offset="0%"
+                            stopColor="#14b8a6"
+                            stopOpacity="0.6"
+                          />
+                          <stop
+                            offset="100%"
+                            stopColor="#3b82f6"
+                            stopOpacity="0.6"
+                          />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
@@ -359,14 +496,14 @@ export default function AIPage() {
       </section>
 
       {/* AI Services Section */}
-      <section className="py-20 bg-white dark:bg-gray-800">
+      <section className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-white dark:bg-gray-800">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-10 2xl:mb-8"
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               AI-Powered Solutions
@@ -417,14 +554,14 @@ export default function AIPage() {
       </section>
 
       {/* AI Technologies Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-10 2xl:mb-8"
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Cutting-Edge AI Technologies
@@ -463,14 +600,14 @@ export default function AIPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white dark:bg-gray-800">
+      <section className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-white dark:bg-gray-800">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-10 2xl:mb-8"
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Why Choose AI Solutions?
@@ -509,14 +646,14 @@ export default function AIPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 to-teal-900 dark:from-black dark:to-teal-900">
+      <section className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-gradient-to-br from-slate-900 to-teal-900 dark:from-black dark:to-teal-900">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-10 2xl:mb-8"
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
               AI Success Metrics
@@ -550,7 +687,7 @@ export default function AIPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white dark:bg-gray-800">
+      <section className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-white dark:bg-gray-800">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -566,17 +703,19 @@ export default function AIPage() {
               Let's discuss how artificial intelligence can revolutionize your
               operations and drive unprecedented growth
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center w-full max-w-md sm:max-w-none mx-auto">
               <button
                 onClick={() => (window.location.href = "/services")}
-                className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teal-500/25 flex items-center gap-2"
+                className="bg-teal-500 hover:bg-teal-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teal-500/25 flex items-center justify-center gap-2 text-sm sm:text-base w-full sm:w-auto whitespace-nowrap"
               >
-                Start AI Journey
-                <ArrowRight className="w-5 h-5" />
+                <span className="flex items-center justify-center gap-2">
+                  Start AI Journey
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                </span>
               </button>
               <button
                 onClick={() => (window.location.href = "/quotes")}
-                className="border-2 border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105"
+                className="border-2 border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm sm:text-base w-full sm:w-auto whitespace-nowrap"
               >
                 Schedule Consultation
               </button>
@@ -584,6 +723,7 @@ export default function AIPage() {
           </motion.div>
         </div>
       </section>
+      <ChatWidget />
     </main>
   );
 }

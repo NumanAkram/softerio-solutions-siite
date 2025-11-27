@@ -53,7 +53,7 @@ export default function PortfolioContact() {
       {/* Decorative Background Image */}
       <div className="absolute inset-0 opacity-5">
         <Image
-          src="/images/tech-pattern.jpg"
+          src="/images/tech-pattern.webp"
           alt="Background Pattern"
           fill
           className="object-cover"

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import PortfolioLogo from "@/public/icons/logo.png";
+import PortfolioLogo from "@/public/icons/logo.webp";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
@@ -15,13 +15,16 @@ export const Navbar = () => {
   }, [pathname]);
   return (
     <div className="absolute top-0 z-50 w-full flex justify-center">
-      <div className="w-full max-w-[1920px] py-12 lg:pl-[12.3rem] md:pl-10 pl-6 lg:pr-[8.6rem] md:pr-10 pr-6 flex justify-between items-center">
+      <div className="w-full max-w-[1920px] pt-4 pb-12 md:pt-4 md:pb-12 lg:pt-4 lg:pb-12 lg:px-12 md:pl-10 pl-6 md:pr-10 pr-6 xl:pl-[12.3rem] xl:pr-[8.6rem] flex justify-between items-center">
         <Image
           className="w-[4rem] h-[4rem]"
           src={PortfolioLogo}
           width={100}
           height={100}
           alt="logo"
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(56%) sepia(97%) saturate(1184%) hue-rotate(141deg) brightness(95%) contrast(101%)'
+          }}
         />
 
       {/* Desktop nav */}
@@ -67,11 +70,11 @@ export const Navbar = () => {
         <button
           aria-label="Open menu"
           onClick={() => setIsMobileOpen(true)}
-          className="lg:hidden text-white focus:outline-none"
+          className="lg:hidden focus:outline-none"
         >
-          <span className="block w-7 h-0.5 bg-white mb-1.5" />
-          <span className="block w-7 h-0.5 bg-white mb-1.5" />
-          <span className="block w-7 h-0.5 bg-white" />
+          <span className="block w-7 h-0.5 bg-teal-500 mb-1.5" />
+          <span className="block w-7 h-0.5 bg-teal-500 mb-1.5" />
+          <span className="block w-7 h-0.5 bg-teal-500" />
         </button>
       </div>
 
@@ -94,7 +97,7 @@ export const Navbar = () => {
           <div className="flex-1 text-white relative overflow-hidden">
             {/* Background Image - Full coverage */}
             <Image 
-              src="/images/mobile-drop down-banner.jpg"
+              src="/images/mobile-drop down-banner.webp"
               alt="Background"
               fill
               className="object-cover object-bottom"

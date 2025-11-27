@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Play } from "lucide-react";
+import ChatWidget from "@/components/ChatWidget";
 
 // Vimeo Player type declaration
 declare global {
@@ -155,10 +156,10 @@ export default function VideoPage() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-300/20 rounded-full blur-3xl"></div>
       </div>
 
-      <main className="pt-20 pb-16 relative z-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="pt-16 sm:pt-20 xl:pt-16 2xl:pt-12 pb-12 sm:pb-16 xl:pb-12 2xl:pb-10 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 xl:py-8 2xl:py-6">
           {/* Page Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 sm:mb-12 xl:mb-8 2xl:mb-6">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
               Softerio Solutions
             </h1>
@@ -288,6 +289,7 @@ export default function VideoPage() {
           </div>
         </div>
       </main>
+      <ChatWidget />
     </div>
   );
 }

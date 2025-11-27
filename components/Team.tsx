@@ -51,10 +51,10 @@ const teamMembers = [
 
 export default function Team() {
   return (
-    <section className="py-20 bg-teal-500 dark:bg-teal-600 transition-colors duration-300">
+    <section className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-teal-500 dark:bg-teal-600 transition-colors duration-300">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-10 2xl:mb-8">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
             Our Team
           </h2>

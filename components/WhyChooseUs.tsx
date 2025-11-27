@@ -57,11 +57,11 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300 w-full">
+    <section className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300 w-full">
       {/* Background Image on Right Side - Hidden on mobile, visible on larger screens */}
       <div className="hidden md:block absolute top-0 right-0 w-1/2 h-full z-0 max-w-full">
         <Image
-          src="/images/tech-pattern2.png"
+          src="/images/tech-pattern2.webp"
           alt="Technology pattern background"
           fill
           className="object-cover opacity-20 dark:opacity-30"
@@ -71,7 +71,7 @@ export default function WhyChooseUs() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 xl:mb-10 2xl:mb-8">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 transition-colors duration-300">
             Why Choose Us
           </h2>

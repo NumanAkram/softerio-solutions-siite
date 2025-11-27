@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { PenTool, Upload, Download, Clock, Star, CheckCircle } from 'lucide-react';
+import ChatWidget from '@/components/ChatWidget';
 
 const sampleImages = [
   {
@@ -285,6 +286,7 @@ export default function TracingServicePage() {
           </form>
         </div>
       </div>
+      <ChatWidget />
     </main>
   );
 }

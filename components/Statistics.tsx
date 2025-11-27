@@ -8,21 +8,21 @@ const stats = [
     icon: Users,
     number: 232,
     label: "Happy Clients",
-    description: "Consequuntur quae directo",
+    description: "Trusted by businesses worldwide",
     slideDirection: "left",
   },
   {
     icon: BarChart3,
     number: 521,
     label: "Completed Projects",
-    description: "Adipisci atque quia aut",
+    description: "Successfully delivered with excellence",
     slideDirection: "bottom",
   },
   {
     icon: Clock,
     number: 453,
     label: "Hours of Support",
-    description: "Aut commodi quaerat",
+    description: "Dedicated customer service",
     slideDirection: "right",
   },
 ];
@@ -92,7 +92,7 @@ export default function Statistics() {
   return (
     <section
       id="statistics-section"
-      className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+      className="py-12 sm:py-16 lg:py-20 xl:py-12 2xl:py-10 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
     >
       <div className="container mx-auto px-4 sm:px-6 max-w-full">
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
