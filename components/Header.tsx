@@ -11,6 +11,10 @@ export default function Header() {
   const [isMenuDropdownOpen, setIsMenuDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  
+  // Pages where navbar text should be black in light mode
+  const pagesWithBlackText = ['/services', '/testimonials', '/about', '/contact', '/blog', '/video'];
+  const shouldUseBlackText = pagesWithBlackText.includes(pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +63,9 @@ export default function Header() {
             <Link
               href="/"
               className={`transition-colors duration-300 ${
-                isScrolled
+                shouldUseBlackText
+                  ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
+                  : isScrolled
                   ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                   : "text-white hover:text-teal-400"
               }`}
@@ -69,7 +75,9 @@ export default function Header() {
             <Link
               href="/services"
               className={`transition-colors duration-300 ${
-                isScrolled
+                shouldUseBlackText
+                  ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
+                  : isScrolled
                   ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                   : "text-white hover:text-teal-400"
               }`}
@@ -79,7 +87,9 @@ export default function Header() {
             <Link
               href="/ai"
               className={`transition-colors duration-300 ${
-                isScrolled
+                shouldUseBlackText
+                  ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
+                  : isScrolled
                   ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                   : "text-white hover:text-teal-400"
               }`}
@@ -89,7 +99,9 @@ export default function Header() {
             <Link
               href="/portfolio"
               className={`transition-colors duration-300 ${
-                isScrolled
+                shouldUseBlackText
+                  ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
+                  : isScrolled
                   ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                   : "text-white hover:text-teal-400"
               }`}
@@ -99,7 +111,9 @@ export default function Header() {
             <Link
               href="/testimonials"
               className={`transition-colors duration-300 ${
-                isScrolled
+                shouldUseBlackText
+                  ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
+                  : isScrolled
                   ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                   : "text-white hover:text-teal-400"
               }`}
@@ -116,7 +130,9 @@ export default function Header() {
                 <button
                   onClick={() => setIsMenuDropdownOpen(!isMenuDropdownOpen)}
                   className={`flex items-center transition-colors duration-300 ${
-                    isScrolled
+                    shouldUseBlackText
+                      ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
+                      : isScrolled
                       ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                       : "text-white hover:text-teal-400"
                   }`}
@@ -155,7 +171,9 @@ export default function Header() {
               <Link
                 href="/video"
                 className={`flex items-center gap-2 transition-colors duration-300 ${
-                  isScrolled
+                  shouldUseBlackText
+                    ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
+                    : isScrolled
                     ? "text-gray-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400"
                     : "text-white hover:text-teal-400"
                 }`}
