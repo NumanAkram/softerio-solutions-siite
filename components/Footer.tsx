@@ -237,7 +237,7 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-teal-500 flex-shrink-0 mt-1" />
                 <span className="text-gray-400">
-                  532 Pilot School Road Near Mehran Gym, Iqbal Town
+                  532 Pilot School Road Near Mehran Gym, Allama Iqbal Town
                 </span>
               </div>
               <div className="flex items-start space-x-3">

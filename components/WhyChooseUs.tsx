@@ -15,42 +15,42 @@ const features = [
     icon: Monitor,
     title: "Experience",
     description:
-      "Ronsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "With years of industry expertise, we bring deep knowledge and proven methodologies to every project, ensuring optimal outcomes for your business.",
     color: "bg-blue-500",
   },
   {
     icon: Settings,
     title: "Pricing",
     description:
-      "Ronsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Transparent and competitive pricing models designed to provide exceptional value without compromising on quality or service excellence.",
     color: "bg-red-500",
   },
   {
     icon: Lightbulb,
     title: "Products",
     description:
-      "Ronsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Cutting-edge solutions and innovative products tailored to meet your specific needs, powered by the latest technology and best practices.",
     color: "bg-gray-600",
   },
   {
     icon: Truck,
     title: "Delivery",
     description:
-      "Ronsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Efficient and timely project delivery with agile methodologies, ensuring your solutions are deployed quickly without sacrificing quality.",
     color: "bg-yellow-500",
   },
   {
     icon: Users,
     title: "Approach",
     description:
-      "Ronsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "A collaborative, client-centric methodology that prioritizes understanding your goals and delivering customized solutions that drive real results.",
     color: "bg-green-600",
   },
   {
     icon: Headphones,
     title: "Support",
     description:
-      "Ronsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Dedicated 24/7 customer support team ready to assist you at every step, ensuring seamless operations and continuous improvement of your solutions.",
     color: "bg-teal-500",
   },
 ];
@@ -76,7 +76,7 @@ export default function WhyChooseUs() {
             Why Choose Us
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4 transition-colors duration-300">
-            Lorem ipsum dolor sit amet
+            We deliver exceptional results through innovative solutions, proven expertise, and unwavering commitment to your success.
           </p>
         </div>
 
@@ -92,8 +92,7 @@ export default function WhyChooseUs() {
                     Experience
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-sm leading-relaxed transition-colors duration-300">
-                    Ronsectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
+                    With years of industry expertise, we bring deep knowledge and proven methodologies to every project, ensuring optimal outcomes for your business.
                   </p>
                 </div>
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
@@ -111,8 +110,7 @@ export default function WhyChooseUs() {
                     Pricing
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-sm leading-relaxed transition-colors duration-300">
-                    Ronsectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
+                    Transparent and competitive pricing models designed to provide exceptional value without compromising on quality or service excellence.
                   </p>
                 </div>
               </div>
@@ -127,8 +125,7 @@ export default function WhyChooseUs() {
                     Products
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-sm leading-relaxed transition-colors duration-300">
-                    Ronsectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
+                    Cutting-edge solutions and innovative products tailored to meet your specific needs, powered by the latest technology and best practices.
                   </p>
                 </div>
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -146,8 +143,7 @@ export default function WhyChooseUs() {
                     Delivery
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-sm leading-relaxed transition-colors duration-300">
-                    Ronsectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
+                    Efficient and timely project delivery with agile methodologies, ensuring your solutions are deployed quickly without sacrificing quality.
                   </p>
                 </div>
               </div>
@@ -162,8 +158,7 @@ export default function WhyChooseUs() {
                     Approach
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-sm leading-relaxed transition-colors duration-300">
-                    Ronsectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
+                    A collaborative, client-centric methodology that prioritizes understanding your goals and delivering customized solutions that drive real results.
                   </p>
                 </div>
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -181,8 +176,7 @@ export default function WhyChooseUs() {
                     Support
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-sm leading-relaxed transition-colors duration-300">
-                    Ronsectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
+                    Dedicated 24/7 customer support team ready to assist you at every step, ensuring seamless operations and continuous improvement of your solutions.
                   </p>
                 </div>
               </div>

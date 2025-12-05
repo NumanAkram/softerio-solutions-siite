@@ -118,7 +118,7 @@ export default function Contact() {
                     </h4>
                     <ul className="list-disc pl-5 space-y-2 text-left">
                       <li className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
-                        532 Pilot school road near mehran gym, Iqbal&nbsp;town
+                        532 Pilot School Road Near Mehran Gym, Allama Iqbal Town
                       </li>
                       <li className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
                         Väinö Auerin Katu 1, 00560, Helsinki,&nbsp;Finland
